@@ -1,0 +1,27 @@
+{
+    "name": "thachvd/laravel-site-controller-api",
+    "description": "Laravel Site Controller API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ThachVd\\LaravelSiteControllerApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ThachVD",
+            "email": "thachvd@thefirstone.jp"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3|8.0.*|8.1.*|8.2.*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ThachVd\\LaravelSiteControllerApi\\SiteControllerApiServiceProvider"
+            ]
+        }
+    }
+}

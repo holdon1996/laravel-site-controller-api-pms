@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "ee13c242-0f2e-461f-8e79-5e0882d41009",
+		"name": "Laravel Site Controller API Package",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30138098"
+	},
+	"item": [
+		{
+			"name": "TL Lincoln Get Bulk Empty Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tllHotelCode",
+							"value": "C77338",
+							"type": "text"
+						},
+						{
+							"key": "tllRmTypeCode",
+							"value": "482",
+							"type": "text"
+						},
+						{
+							"key": "person_number",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "date_from",
+							"value": "20250216",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "date_to",
+							"value": "20250217",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/bulk-empty-room",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"sc",
+						"api",
+						"tl-lincoln",
+						"bulk-empty-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TL Lincoln Get Empty Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tllHotelCode",
+							"value": "C77338",
+							"type": "text"
+						},
+						{
+							"key": "tllRmTypeCode",
+							"value": "482",
+							"type": "text"
+						},
+						{
+							"key": "person_number",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "date_from",
+							"value": "20250216",
+							"type": "text"
+						},
+						{
+							"key": "date_to",
+							"value": "20250217",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/empty-room",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"sc",
+						"api",
+						"tl-lincoln",
+						"empty-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TL Lincoln Get Price Plan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tllHotelCode",
+							"value": "C77338",
+							"type": "text"
+						},
+						{
+							"key": "tllRmTypeCode",
+							"value": "482",
+							"type": "text"
+						},
+						{
+							"key": "person_number",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "date_from",
+							"value": "20250216",
+							"type": "text"
+						},
+						{
+							"key": "date_to",
+							"value": "20250217",
+							"type": "text"
+						},
+						{
+							"key": "tllPlanCode",
+							"value": "15303611",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "15303611\t\nD check plan 共通プラン名 2511\n\nD check 共通室タイプ名 01 2511\tD type check プラングループ名",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/price-plan",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"sc",
+						"api",
+						"tl-lincoln",
+						"price-plan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TL Lincoln Get Price Plan Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tllHotelCode",
+							"value": "C77338",
+							"type": "text"
+						},
+						{
+							"key": "tllRmTypeCode",
+							"value": "482",
+							"type": "text"
+						},
+						{
+							"key": "person_number",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "date_from",
+							"value": "20250216",
+							"type": "text"
+						},
+						{
+							"key": "date_to",
+							"value": "20250217",
+							"type": "text"
+						},
+						{
+							"key": "tllPlanCode",
+							"value": "15303611",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "15303611\t\nD check plan 共通プラン名 2511\n\nD check 共通室タイプ名 01 2511\tD type check プラングループ名",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/price-plan",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"sc",
+						"api",
+						"tl-lincoln",
+						"price-plan"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
