@@ -3,6 +3,7 @@
 namespace ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln;
 
 use GuzzleHttp\Client;
+use ThachVd\LaravelSiteControllerApi\Models\ScApiLog;
 
 /**
  *
