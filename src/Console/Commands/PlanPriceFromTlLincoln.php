@@ -16,7 +16,7 @@ class PlanPriceFromTlLincoln extends Command
      *
      * @var string
      */
-    protected $signature = 'app:EmptyRoomFromTlLincoln';
+    protected $signature = 'app:PlanPriceFromTlLincoln';
 
     /**
      * The console command description.
