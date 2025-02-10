@@ -3,7 +3,12 @@
 namespace ThachVd\LaravelSiteControllerApi;
 
 use Illuminate\Support\ServiceProvider;
-use ThachVd\LaravelSiteControllerApi\Console\Commands\ScApiGenerateModels;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\EmptyRoomFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterHotelFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterPlanDiffFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterPlanFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterRoomTypeDiffFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\PlanPriceFromTlLincoln;
 
 class SiteControllerApiServiceProvider extends ServiceProvider
 {
@@ -16,6 +21,16 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__ . '/configs/sc.php', 'sc'
         );
+
+        $this->commands([
+            MasterHotelFromTlLincoln::class,
+            MasterRoomTypeDiffFromTlLincoln::class,
+            MasterRoomTypeDiffFromTlLincoln::class,
+            MasterPlanFromTlLincoln::class,
+            MasterPlanDiffFromTlLincoln::class,
+            EmptyRoomFromTlLincoln::class,
+            PlanPriceFromTlLincoln::class,
+        ]);
     }
 
     /**

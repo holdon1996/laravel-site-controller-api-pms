@@ -2,8 +2,7 @@
 
 namespace ThachVd\LaravelSiteControllerApi\Console\Commands;
 
-use App\Models\ScTlLincolnSoapApiLog;
-use App\Services\Sc\TlLincoln\TlLincolnService;
+use ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 

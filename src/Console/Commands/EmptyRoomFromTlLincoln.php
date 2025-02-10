@@ -2,7 +2,7 @@
 
 namespace ThachVd\LaravelSiteControllerApi\Console\Commands;
 
-use App\Services\Sc\TlLincoln\TlLincolnService;
+use ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnService;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
