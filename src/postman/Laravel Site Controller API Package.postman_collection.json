@@ -85,20 +85,17 @@
 						{
 							"key": "person_number",
 							"value": "1",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "date_from",
 							"value": "20250216",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "date_to",
 							"value": "20250217",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						}
 					]
 				},
