@@ -3,9 +3,9 @@
 namespace ThachVd\LaravelSiteControllerApi\Controllers\Sc;
 
 use App\Http\Controllers\Controller;
-use App\Services\Sc\TlLincoln\TlLincolnSoapBody;
-use App\Services\Sc\TlLincoln\TlLincolnSoapClient;
-use App\Services\Sc\TlLincoln\TlLincolnSoapService;
+use ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapBody;
+use ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapClient;
+use ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapService;
 use Illuminate\Http\Request;
 
 /**

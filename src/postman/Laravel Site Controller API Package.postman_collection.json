@@ -45,7 +45,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/bulk-empty-room",
+					"raw": "http://127.0.0.1:8000/api/sc/tl-lincoln/bulk-empty-room",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -55,8 +55,8 @@
 					],
 					"port": "8000",
 					"path": [
-						"sc",
 						"api",
+						"sc",
 						"tl-lincoln",
 						"bulk-empty-room"
 					]
@@ -85,22 +85,25 @@
 						{
 							"key": "person_number",
 							"value": "1",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "date_from",
 							"value": "20250216",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "date_to",
 							"value": "20250217",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/empty-room",
+					"raw": "http://127.0.0.1:8000/api/sc/tl-lincoln/empty-room",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -110,8 +113,8 @@
 					],
 					"port": "8000",
 					"path": [
-						"sc",
 						"api",
+						"sc",
 						"tl-lincoln",
 						"empty-room"
 					]
@@ -166,7 +169,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/price-plan",
+					"raw": "http://127.0.0.1:8000/api/sc/tl-lincoln/price-plan",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -176,8 +179,8 @@
 					],
 					"port": "8000",
 					"path": [
-						"sc",
 						"api",
+						"sc",
 						"tl-lincoln",
 						"price-plan"
 					]
@@ -194,6 +197,11 @@
 					"mode": "formdata",
 					"formdata": [
 						{
+							"key": "tllPlanCode",
+							"value": "15303611",
+							"type": "text"
+						},
+						{
 							"key": "tllHotelCode",
 							"value": "C77338",
 							"type": "text"
@@ -206,22 +214,20 @@
 						{
 							"key": "person_number",
 							"value": "1",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "date_from",
 							"value": "20250216",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "date_to",
 							"value": "20250217",
-							"type": "text"
-						},
-						{
-							"key": "tllPlanCode",
-							"value": "15303611",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "",
@@ -232,7 +238,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/sc/api/tl-lincoln/price-plan",
+					"raw": "http://127.0.0.1:8000/api/sc/tl-lincoln/bulk-price-plan",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -242,10 +248,10 @@
 					],
 					"port": "8000",
 					"path": [
-						"sc",
 						"api",
+						"sc",
 						"tl-lincoln",
-						"price-plan"
+						"bulk-price-plan"
 					]
 				}
 			},

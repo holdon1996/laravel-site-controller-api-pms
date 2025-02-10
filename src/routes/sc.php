@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use ThachVd\LaravelSiteControllerApi\Controllers\Sc\TlLincolnController;
 
-Route::prefix('/api')->group(function () {
+Route::prefix('/api/sc')->group(function () {
     Route::get('/health', function (){
         echo "ok";
     });
