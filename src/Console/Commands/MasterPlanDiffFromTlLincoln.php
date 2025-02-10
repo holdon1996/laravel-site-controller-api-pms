@@ -13,7 +13,7 @@ class MasterPlanDiffFromTlLincoln extends Command
      *
      * @var string
      */
-    protected $signature = 'app:MasterPlanFromTlLincoln';
+    protected $signature = 'app:MasterPlanDiffFromTlLincoln';
 
     /**
      * The console command description.

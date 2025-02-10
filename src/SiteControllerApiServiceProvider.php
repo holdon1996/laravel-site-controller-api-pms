@@ -8,6 +8,7 @@ use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterHotelFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterPlanDiffFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterPlanFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterRoomTypeDiffFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterRoomTypeFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\PlanPriceFromTlLincoln;
 
 class SiteControllerApiServiceProvider extends ServiceProvider
@@ -24,7 +25,7 @@ class SiteControllerApiServiceProvider extends ServiceProvider
 
         $this->commands([
             MasterHotelFromTlLincoln::class,
-            MasterRoomTypeDiffFromTlLincoln::class,
+            MasterRoomTypeFromTlLincoln::class,
             MasterRoomTypeDiffFromTlLincoln::class,
             MasterPlanFromTlLincoln::class,
             MasterPlanDiffFromTlLincoln::class,
