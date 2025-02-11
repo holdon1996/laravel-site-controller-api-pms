@@ -22,9 +22,10 @@ class TlLincolnController extends Controller
      * @param TlLincolnSoapClient $tLLincolnSoapClient
      * @param TlLincolnSoapBody $tlLincolnSoapBody
      */
-    public function __construct(TlLincolnSoapService $tlLincolnService)
+    public function __construct()
     {
-        $this->tlLincolnService = $tlLincolnService;
+        $serviceClass           = config('sc.booking_handler'); // Lấy class từ config
+        $this->tlLincolnService = app($serviceClass);
     }
 
     /**

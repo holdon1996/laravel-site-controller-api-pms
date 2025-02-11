@@ -264,6 +264,10 @@ class TlLincolnSoapService
         }
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     public function createBooking(Request $request)
     {
         // precheck create booking
@@ -276,6 +280,10 @@ class TlLincolnSoapService
         // TODO return response to client
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function preCheckCreateBooking(Request $request)
     {
         $url     = config('sc.tllincoln_api.check_pre_booking_url');
@@ -286,6 +294,10 @@ class TlLincolnSoapService
         return response()->json($response);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function entryBooking(Request $request)
     {
         $url     = config('sc.tllincoln_api.entry_booking_url');
@@ -296,6 +308,12 @@ class TlLincolnSoapService
         return response()->json($response);
     }
 
+    /**
+     * @param $url
+     * @param $command
+     * @param Request $request
+     * @return mixed
+     */
     public function processBooking($url, $command, Request $request)
     {
         $dataRequest = $this->setCreateBookingSoapRequest($request);
@@ -357,6 +375,10 @@ class TlLincolnSoapService
         }
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function setCreateBookingSoapRequest(Request $request)
     {
         $tllHotelId                       = $request->get('tll_hotel_id');       // TODO pass tl lincoln hotel id
@@ -818,6 +840,10 @@ class TlLincolnSoapService
         $this->tlLincolnSoapClient->setBody($body);
     }
 
+    /**
+     * @param Request $request
+     * @return void
+     */
     public function setBulkPricePlanSoapRequest(Request $request): void
     {
         $tllHotelCode  = $request->input('tllHotelCode');

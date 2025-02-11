@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'booking_handler' => \Thachvd\LaravelSiteControllerApi\Services\TlLincolnSoapService::class,
     'tllincoln_api' => [
         'agt_id' => env('SC_TLLINCOLN_AGT_ID'),
         'agt_password' => env('SC_TLLINCOLN_AGT_PASSWORD'),
