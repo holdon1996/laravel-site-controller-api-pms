@@ -23,6 +23,10 @@ class SiteControllerApiServiceProvider extends ServiceProvider
             __DIR__ . '/configs/sc.php', 'sc'
         );
 
+        $this->mergeConfigFrom(
+            __DIR__ . '/configs/sc_filesystems.php', 'filesystems'
+        );
+
         $this->commands([
             MasterHotelFromTlLincoln::class,
             MasterRoomTypeFromTlLincoln::class,
@@ -51,6 +55,10 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         // publish config
         $this->publishes([
             __DIR__ . '/configs/sc.php' => config_path('sc.php'),
+        ], 'sc-api-configs');
+
+        $this->publishes([
+            __DIR__ . '/configs/sc_filesystems.php' => config_path('sc_filesystems.php'),
         ], 'sc-api-configs');
 
         //// publish model

@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'booking_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapService::class,
+    'tllincoln' => [
+        'booking_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapService::class,
+        'mapping_data_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnMappingService::class,
+    ],
     'tllincoln_api' => [
         'agt_id' => env('SC_TLLINCOLN_AGT_ID'),
         'agt_password' => env('SC_TLLINCOLN_AGT_PASSWORD'),

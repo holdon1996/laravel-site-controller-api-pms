@@ -24,7 +24,7 @@ class TlLincolnController extends Controller
      */
     public function __construct()
     {
-        $serviceClass           = config('sc.booking_handler'); // Lấy class từ config
+        $serviceClass           = config('sc.tllincoln.booking_handler'); // Lấy class từ config
         $this->tlLincolnService = app($serviceClass);
     }
 
