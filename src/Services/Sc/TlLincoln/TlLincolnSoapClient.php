@@ -108,12 +108,11 @@ class TlLincolnSoapClient
             $scApiLog                = [
                 'url'          => $url,
                 'method'       => $this->options['method'],
-                'request_body' => $this->options['body'] ?? [],
+                'request' => $this->options['body'] ?? [],
             ];
             $scApiLog['status_code'] = $response->getStatusCode();
             $scApiLog['response']    = $response->getBody()->getContents();
         } catch (\GuzzleHttp\Exception\RequestException $e) {
-            dd($e);
             \Log::error('API connection failed - URL: ' . $url);
             \Log::error($e);
 
