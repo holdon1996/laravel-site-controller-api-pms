@@ -139,7 +139,7 @@ class TlLincolnPlan extends Model
 
     const CSV_ATTRIBUTE = [
         'TLLINCOLN_HOTEL_ID'               => 0,
-        'ROOM_CODE'                        => 1,
+        'ROOM_TYPE_CODE'                   => 1,
         'ROOM_STATUS'                      => 2,
         'PLAN_ID'                          => 3,
         'PLAN_NAME'                        => 4,
@@ -187,8 +187,9 @@ class TlLincolnPlan extends Model
         'PLAN_FEE_CHILD_NONE_OPTION'       => 55,
         'PLAN_NIGHT_STAY_FROM'             => 56,
         'PLAN_NIGHT_STAY_TO'               => 57,
-        'PLAN_UPDATED_AT'                  => 58,
-        'PLAN_USE_TYPE'                    => 59,
+        'PLAN_UPDATED_TYPE'                => 58,
+        'PLAN_UPDATED_AT'                  => 59,
+        'PLAN_USE_TYPE'                    => 60,
     ];
     const COURSE_MEAL = [
         'TWO_MEALS'      => 1,
