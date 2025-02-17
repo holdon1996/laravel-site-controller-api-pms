@@ -250,7 +250,7 @@ class TlLincolnSoapService
             return response()->json([
                 'success' => $success,
                 'data'    => $data,
-                'date' => now()->format(config('sc.tllincoln_api.DATE_FORMAT')),
+                'date' => now()->format(config('sc.tllincoln_api.date_format')),
             ]);
         } catch (\Exception $e) {
             $soapApiLog['response']   = $e->getMessage();
@@ -437,7 +437,7 @@ class TlLincolnSoapService
         $checkInDate       = Carbon::parse($bookingSystem->checkin_date);
         $checkOutDate      = Carbon::parse($bookingSystem->checkout_date);
         $rooms             = json_decode($request->get('rooms'), true);
-        $checkInRooms      = collect($rooms[$checkInDate->format(config('sc.tllincoln_api.DATE_FORMAT'))]);
+        $checkInRooms      = collect($rooms[$checkInDate->format(config('sc.tllincoln_api.date_format'))]);
         $people            = json_decode($request->get('people'), true);
         // total child count or not count
         $grandTotalPaxCount            = (int)$people['adult_qty']
