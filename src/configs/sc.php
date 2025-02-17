@@ -18,7 +18,7 @@ return [
         'entry_booking_url' =>  env('SC_TLLINCOLN_URL_SOAP_API') . 'ReservationControlService',
         'cancel_booking_url' =>  env('SC_TLLINCOLN_URL_SOAP_API') . 'ReservationControlServiceWithCP',
         'command_cancel_booking' => env('SC_TLLINCOLN_URL_SOAP_API') . 'deleteBookingWithCP',
-        'get_master_url' => env('TLLINCOLN_MASTER_DOWNLOAD_URL'),
+        'get_master_url' => env('SC_TLLINCOLN_MASTER_DOWNLOAD_URL'),
         'get_partial_url' => env('SC_TLLINCOLN_PARTIAL_DOWNLOAD_URL'),
         'api_file_type_const' => [
             'file_master_hotel' => 11,
