@@ -186,7 +186,7 @@
 			"response": []
 		},
 		{
-			"name": "TL Lincoln Get Price Plan Copy",
+			"name": "TL Lincoln Get Bulk Price Plan",
 			"request": {
 				"method": "POST",
 				"header": [],
