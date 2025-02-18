@@ -804,7 +804,7 @@ class TlLincolnService
             $planId           = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ID']];
             $searchData       = [
                 'tllincoln_hotel_id'       => $tlLincolnHotelId,
-                'tllincoln_plan_room_code' => $roomCode,
+                'tllincoln_plan_room_code' => $roomTypeCode,
                 'tllincoln_plan_id'        => $planId,
             ];
 
@@ -860,7 +860,7 @@ class TlLincolnService
             ] = $this->extractedPlan($item);
             $saveData = [
                 'tllincoln_hotel_id'                         => $tlLincolnHotelId,
-                'tllincoln_plan_room_code'                   => $roomCode,
+                'tllincoln_plan_room_code'                   => $roomTypeCode,
                 'tllincoln_plan_room_status'                 => $roomStatus,
                 'tllincoln_plan_id'                          => $planId,
                 'tllincoln_plan_name'                        => $planName,
@@ -946,7 +946,7 @@ class TlLincolnService
             $planId           = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ID']];
             $searchData       = [
                 'tllincoln_hotel_id'       => $tlLincolnHotelId,
-                'tllincoln_plan_room_code' => $roomCode,
+                'tllincoln_plan_room_code' => $roomTypeCode,
                 'tllincoln_plan_id'        => $planId,
             ];
 
@@ -1003,7 +1003,7 @@ class TlLincolnService
             ] = $this->extractedPlan($item);
             $saveData = [
                 'tllincoln_hotel_id'                         => $tlLincolnHotelId,
-                'tllincoln_plan_room_code'                   => $roomCode,
+                'tllincoln_plan_room_code'                   => $roomTypeCode,
                 'tllincoln_plan_room_status'                 => $roomStatus,
                 'tllincoln_plan_id'                          => $planId,
                 'tllincoln_plan_name'                        => $planName,
