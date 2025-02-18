@@ -29,6 +29,7 @@ return new class extends Migration {
             $table->string('tllincoln_roomtype_image_caption')->nullable();
             $table->integer('tllincoln_roomtype_image_updated_at')->nullable();
             $table->tinyInteger('tllincoln_roomtype_flag');
+            $table->tinyInteger('tllincoln_roomtype_update_type')->nullable();
             $table->string('tllincoln_roomtype_code_others')->nullable();
             $table->integer('tllincoln_roomtype_updated_at')->nullable();
             $table->string('tllincoln_roomtype_image1_url')->nullable();
