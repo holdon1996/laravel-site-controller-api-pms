@@ -24,7 +24,7 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         );
 
         $this->mergeConfigFrom(
-            __DIR__ . '/configs/sc_filesystems.php', 'filesystems'
+            __DIR__ . '/configs/sc_filesystems.php', 'filesystems.disks'
         );
 
         $this->commands([
