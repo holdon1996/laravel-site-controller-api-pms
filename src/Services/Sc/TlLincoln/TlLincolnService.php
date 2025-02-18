@@ -587,14 +587,23 @@ class TlLincolnService
                     if ($tlLincolnHotel) {
                         // mapping tllincoln_hotel_id
                         if ($item[1]) {
-                            $tlLincolnHotel->facility_id = $item[1];
+                            $tlLincolnHotel->facility_id             = $item[1];
+                            $tlLincolnHotel->tllincoln_hotel_name    = $item[2] ?? null;
+                            $tlLincolnHotel->tllincoln_hotel_address = $item[3] ?? null;
+                            $tlLincolnHotel->tllincoln_hotel_phone   = $item[4] ?? null;
                         } else {
-                            $tlLincolnHotel->facility_id = null;
+                            $tlLincolnHotel->facility_id             = null;
+                            $tlLincolnHotel->tllincoln_hotel_name    = null;
+                            $tlLincolnHotel->tllincoln_hotel_address = null;
+                            $tlLincolnHotel->tllincoln_hotel_phone   = null;
                         }
                     } else {
                         TlLincolnHotel::create([
-                            'tllincoln_hotel_id' => $item[0],
-                            'facility_id'        => $item[1] ?: null,
+                            'tllincoln_hotel_id'      => $item[0],
+                            'facility_id'             => $item[1] ?: null,
+                            'tllincoln_hotel_name'    => $item[2] ?: null,
+                            'tllincoln_hotel_address' => $item[3] ?: null,
+                            'tllincoln_hotel_phone'   => $item[4] ?: null,
                         ]);
                     }
 

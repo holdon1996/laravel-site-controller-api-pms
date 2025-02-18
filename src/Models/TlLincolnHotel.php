@@ -10,5 +10,8 @@ class TlLincolnHotel extends Model
     protected $fillable = [
         'facility_id',
         'tllincoln_hotel_id',
+        'tllincoln_hotel_name',
+        'tllincoln_hotel_address',
+        'tllincoln_hotel_phone',
     ];
 }
