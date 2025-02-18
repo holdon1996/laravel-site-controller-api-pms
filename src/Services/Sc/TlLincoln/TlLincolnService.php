@@ -252,7 +252,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_master_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -289,7 +289,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_master_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -326,7 +326,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_partial_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -363,7 +363,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_master_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -400,7 +400,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_partial_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -437,7 +437,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_partial_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -474,7 +474,7 @@ class TlLincolnService
 
         $url     = config('sc.tllincoln_api.get_partial_url');
         $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->query_params, $this->body);
+        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params, $this->client->body);
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
