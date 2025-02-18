@@ -259,7 +259,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'hotels');
 
         // import to db
         if ($fileContent) {
@@ -296,7 +296,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'roomtypes');
 
         // import to db
         if ($fileContent) {
@@ -333,7 +333,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'roomtypes_diff');
 
         // import to db
         if ($fileContent) {
@@ -370,7 +370,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'plan');
 
         // import to db
         if ($fileContent) {
@@ -407,7 +407,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'plan_diff');
 
         // import to db
         if ($fileContent) {
@@ -444,7 +444,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'empty_rooms');
 
         // import to db
         if ($fileContent) {
@@ -481,7 +481,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response);
+        $fileContent = $this->uploadS3($fileName, $response, 'plan_prices');
 
         // import to db
         if ($fileContent) {
