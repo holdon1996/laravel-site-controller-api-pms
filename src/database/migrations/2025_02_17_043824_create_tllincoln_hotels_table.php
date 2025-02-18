@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tllincoln_hotel_id')->nullable();
             $table->string('tllincoln_hotel_name')->nullable();
             $table->string('tllincoln_hotel_address')->nullable();
-            $table->integer('tllincoln_hotel_phone')->nullable();
+            $table->string('tllincoln_hotel_phone')->nullable();
             $table->timestamps();
         });
     }
