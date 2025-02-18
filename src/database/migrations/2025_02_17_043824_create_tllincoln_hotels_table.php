@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tllincoln_hotels', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->integer('facility_id')->nullable();
             $table->string('tllincoln_hotel_id')->nullable();
+            $table->timestamps();
         });
     }
 
