@@ -30,7 +30,7 @@ return new class extends Migration
             $table->integer('tllincoln_price_night_adults')->nullable();
             $table->integer('tllincoln_price_for_ten_adults_or_more')->nullable();
             $table->tinyInteger('tllincoln_flag');
-            $table->string('tllincoln_updated_at');
+            $table->bigInteger('tllincoln_updated_at');
             $table->timestamps();
         });
     }

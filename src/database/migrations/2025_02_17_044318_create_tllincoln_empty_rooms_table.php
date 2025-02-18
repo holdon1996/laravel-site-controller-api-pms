@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('tllincoln_sell_date');
             $table->integer('tllincoln_room_empty')->nullable();
             $table->tinyInteger('tllincoln_flag');
-            $table->string('tllincoln_updated_at');
+            $table->bigInteger('tllincoln_updated_at');
             $table->tinyInteger('tllincoln_sell_status');
             $table->timestamps();
         });
