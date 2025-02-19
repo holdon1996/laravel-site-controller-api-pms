@@ -27,7 +27,14 @@ class SiteControllerApiServiceProvider extends ServiceProvider
             __DIR__ . '/configs/sc_filesystems.php', 'sc_filesystems'
         );
 
-        $this->mergeConfigFrom(config_path('sc_filesystems.php'), 'filesystems.disks');
+        if (file_exists(config_path('sc_filesystems.php'))) {
+            $publishedConfig = require config_path('sc_filesystems.php');
+
+            // Kiểm tra cấu trúc dữ liệu để tránh ghi đè toàn bộ 'filesystems.disks'
+            if (is_array($publishedConfig)) {
+                config(['filesystems.disks' => array_merge(config('filesystems.disks', []), $publishedConfig)]);
+            }
+        }
 
         $this->commands([
             MasterHotelFromTlLincoln::class,
