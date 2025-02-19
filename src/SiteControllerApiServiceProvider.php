@@ -57,9 +57,15 @@ class SiteControllerApiServiceProvider extends ServiceProvider
             __DIR__ . '/configs/sc.php' => config_path('sc.php'),
         ], 'sc-api-configs');
 
+        // publish config filesystems
         $this->publishes([
             __DIR__ . '/configs/sc_filesystems.php' => config_path('sc_filesystems.php'),
         ], 'sc-api-configs');
+
+        // public commands
+        $this->publishes([
+            __DIR__ . '/Console/Commands/' => app_path('Console/Commands'),
+        ], 'sc-api-commands');
 
         //// publish model
         //$publishedModelPaths = [
