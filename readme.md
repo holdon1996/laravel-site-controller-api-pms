@@ -10,7 +10,7 @@ This package is a simple implementation of a Laravel package that helps you crea
 
 ## System Requirements
 - Laravel 5.5 or later
-- PHP 7.2 or later
+- PHP 7.4 or later
 
 ## Installation
 Install the package via composer:
