@@ -684,7 +684,7 @@ class TlLincolnService
             $tlLincolnApiResponse['request'] = json_encode($options);
             $response                        = $client->request($method, $url, $options);
         } catch (\Exception $e) {
-            \Log::error('command MasterHotelFromTlLincoln error: ' . $e->getMessage());
+            \Log::error("API url=$url error: " . $e->getMessage());
             \Log::error($e);
             $tlLincolnApiResponse['status_code'] = 500;
             $tlLincolnApiResponse['response']    = $e->getMessage();
