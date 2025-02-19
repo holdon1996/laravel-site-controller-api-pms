@@ -24,8 +24,10 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         );
 
         $this->mergeConfigFrom(
-            __DIR__ . '/configs/sc_filesystems.php', 'filesystems.disks'
+            __DIR__ . '/configs/sc_filesystems.php', 'sc_filesystems'
         );
+
+        $this->mergeConfigFrom(config_path('sc_filesystems.php'), 'filesystems.disks');
 
         $this->commands([
             MasterHotelFromTlLincoln::class,
