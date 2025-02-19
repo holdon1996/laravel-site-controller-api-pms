@@ -526,7 +526,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response, 'plan');
+        $fileContent = $this->uploadS3($fileName, $response, 'plans');
 
         // import to db
         if ($fileContent) {
@@ -563,7 +563,7 @@ class TlLincolnService
         }
 
         // upload s3
-        $fileContent = $this->uploadS3($fileName, $response, 'plan_diff');
+        $fileContent = $this->uploadS3($fileName, $response, 'plans_diff');
 
         // import to db
         if ($fileContent) {
