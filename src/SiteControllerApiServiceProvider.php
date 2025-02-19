@@ -28,11 +28,8 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         );
 
         if (file_exists(config_path('sc_filesystems.php'))) {
-            $publishedConfig = require config_path('sc_filesystems.php');
-
-            // Kiểm tra cấu trúc dữ liệu để tránh ghi đè toàn bộ 'filesystems.disks'
-            if (is_array($publishedConfig)) {
-                config(['filesystems.disks' => array_merge(config('filesystems.disks', []), $publishedConfig)]);
+            if (file_exists(config_path('sc_filesystems.php'))) {
+                $this->mergeConfigFrom(config_path('sc_filesystems.php'), 'filesystems.disks');
             }
         }
 
