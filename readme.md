@@ -25,33 +25,6 @@ in Laravel old version maybe you need to add service provider to config/app.php
 run command:
 ```php artisan vendor:publish --provider="ThachVd\LaravelSiteControllerApi\SiteControllerApiServiceProvider" ```
 
-In Laravel new version, you need add this code in file bootstrap/app.php
-```
-then: function() {
-    \Illuminate\Support\Facades\Route::middleware('api')
-        ->prefix('sc')
-        ->name('sc.')
-        ->namespace('App\Http\Controllers\Sc')
-        ->group(base_path('routes/sc.php'));
-}
-```
-example:
-```
-->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        api: __DIR__.'/../routes/api.php',
-        commands: __DIR__.'/../routes/console.php',
-        health: '/up',
-        then: function() {
-            \Illuminate\Support\Facades\Route::middleware('api')
-                ->prefix('sc')
-                ->name('sc.')
-                ->namespace('App\Http\Controllers\Sc')
-                ->group(base_path('routes/sc.php'));
-        }
-    )
-```
-
 run command:
 ```php artisan migrate ```
 
