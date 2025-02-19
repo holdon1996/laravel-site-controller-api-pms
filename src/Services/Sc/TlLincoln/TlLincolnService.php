@@ -74,25 +74,25 @@ class TlLincolnService
      */
     public function extractedRoomType(array $item): array
     {
-        $tlLincolnHotelId = $item[TlLincolnRoomType::CSV_ATTRIBUTE['TLLINCOLN_HOTEL_ID']];
-        $status           = $item[TlLincolnRoomType::CSV_ATTRIBUTE['STATUS']];
-        $code             = $item[TlLincolnRoomType::CSV_ATTRIBUTE['CODE']];
-        $name             = $item[TlLincolnRoomType::CSV_ATTRIBUTE['NAME']];
-        $description      = $item[TlLincolnRoomType::CSV_ATTRIBUTE['DESCRIPTION']];
-        $minPerson        = $item[TlLincolnRoomType::CSV_ATTRIBUTE['MIN_PERSON']];
-        $maxPerson        = $item[TlLincolnRoomType::CSV_ATTRIBUTE['MAX_PERSON']];
-        $type             = $item[TlLincolnRoomType::CSV_ATTRIBUTE['TYPE']];
-        $smoking          = $item[TlLincolnRoomType::CSV_ATTRIBUTE['SMOKING']];
-        $noSmoking        = $item[TlLincolnRoomType::CSV_ATTRIBUTE['NO_SMOKING']];
-        $bus              = $item[TlLincolnRoomType::CSV_ATTRIBUTE['BUS']] ?? null;
-        $toilet           = $item[TlLincolnRoomType::CSV_ATTRIBUTE['TOILET']] ?? null;
-        $internet         = $item[TlLincolnRoomType::CSV_ATTRIBUTE['INTERNET']] ?? null;
-        $imageUrl         = $item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_URL']] ?? null;
-        $imageCaption     = $item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_CAPTION']] ?? null;
-        $imageUpdatedAt   = $item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_UPDATED_AT']] ?? null;
-        $flag             = $item[TlLincolnRoomType::CSV_ATTRIBUTE['FLAG']] ?? null;
-        $codeOthers       = $item[TlLincolnRoomType::CSV_ATTRIBUTE['CODE_OTHERS']] ?? null;
-        $updatedAt        = $item[TlLincolnRoomType::CSV_ATTRIBUTE['UPDATED_AT']] ?? null;
+        $tlLincolnHotelId = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['TLLINCOLN_HOTEL_ID']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['TLLINCOLN_HOTEL_ID']] : null;
+        $status           = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['STATUS']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['STATUS']] : null;
+        $code             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['CODE']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['CODE']] : null;
+        $name             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['NAME']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['NAME']] : null;
+        $description      = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['DESCRIPTION']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['DESCRIPTION']] : null;
+        $minPerson        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['MIN_PERSON']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['MIN_PERSON']] : null;
+        $maxPerson        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['MAX_PERSON']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['MAX_PERSON']] : null;
+        $type             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['TYPE']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['TYPE']] : null;
+        $smoking          = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['SMOKING']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['SMOKING']] : null;
+        $noSmoking        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['NO_SMOKING']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['NO_SMOKING']] : null;
+        $bus              = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['BUS']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['BUS']] : null;
+        $toilet           = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['TOILET']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['TOILET']] : null;
+        $internet         = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['INTERNET']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['INTERNET']] : null;
+        $imageUrl         = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_URL']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_URL']] : null;
+        $imageCaption     = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_CAPTION']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_CAPTION']] : null;
+        $imageUpdatedAt   = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_UPDATED_AT']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['IMAGE_UPDATED_AT']] : null;
+        $flag             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['FLAG']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['FLAG']] : null;
+        $codeOthers       = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['CODE_OTHERS']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['CODE_OTHERS']] : null;
+        $updatedAt        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE['UPDATED_AT']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE['UPDATED_AT']] : null;
         return array(
             $tlLincolnHotelId,
             $status,
@@ -122,26 +122,26 @@ class TlLincolnService
      */
     public function extractedRoomTypeDiff(array $item): array
     {
-        $tlLincolnHotelId = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TLLINCOLN_HOTEL_ID']];
-        $status           = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['STATUS']];
-        $code             = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['CODE']];
-        $name             = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['NAME']];
-        $description      = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['DESCRIPTION']];
-        $minPerson        = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['MIN_PERSON']];
-        $maxPerson        = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['MAX_PERSON']];
-        $type             = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TYPE']];
-        $smoking          = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['SMOKING']];
-        $noSmoking        = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['NO_SMOKING']];
-        $bus              = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['BUS']] ?? null;
-        $toilet           = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TOILET']] ?? null;
-        $internet         = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['INTERNET']] ?? null;
-        $imageUrl         = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_URL']] ?? null;
-        $imageCaption     = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_CAPTION']] ?? null;
-        $imageUpdatedAt   = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_UPDATED_AT']] ?? null;
-        $flag             = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['FLAG']] ?? null;
-        $updateType       = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['UPDATE_TYPE']] ?? null;
-        $codeOthers       = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['CODE_OTHERS']] ?? null;
-        $updatedAt        = $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['UPDATED_AT']] ?? null;
+        $tlLincolnHotelId = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TLLINCOLN_HOTEL_ID']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TLLINCOLN_HOTEL_ID']] : null;
+        $status           = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['STATUS']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['STATUS']] : null;
+        $code             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['CODE']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['CODE']] : null;
+        $name             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['NAME']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['NAME']] : null;
+        $description      = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['DESCRIPTION']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['DESCRIPTION']] : null;
+        $minPerson        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['MIN_PERSON']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['MIN_PERSON']] : null;
+        $maxPerson        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['MAX_PERSON']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['MAX_PERSON']] : null;
+        $type             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TYPE']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TYPE']] : null;
+        $smoking          = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['SMOKING']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['SMOKING']] : null;
+        $noSmoking        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['NO_SMOKING']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['NO_SMOKING']] : null;
+        $bus              = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['BUS']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['BUS']] : null;
+        $toilet           = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TOILET']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['TOILET']] : null;
+        $internet         = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['INTERNET']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['INTERNET']] : null;
+        $imageUrl         = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_URL']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_URL']] : null;
+        $imageCaption     = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_CAPTION']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_CAPTION']] : null;
+        $imageUpdatedAt   = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_UPDATED_AT']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['IMAGE_UPDATED_AT']] : null;
+        $flag             = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['FLAG']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['FLAG']] : null;
+        $updateType       = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['UPDATE_TYPE']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['UPDATE_TYPE']] : null;
+        $codeOthers       = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['CODE_OTHERS']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['CODE_OTHERS']] : null;
+        $updatedAt        = filled($item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['UPDATED_AT']]) ? $item[TlLincolnRoomType::CSV_ATTRIBUTE_DIFF['UPDATED_AT']] : null;
         return array(
             $tlLincolnHotelId,
             $status,
@@ -172,54 +172,54 @@ class TlLincolnService
      */
     public function extractedPlan(array $item): array
     {
-        $roomStatus                  = $item[TlLincolnPlan::CSV_ATTRIBUTE['ROOM_STATUS']];
-        $planName                    = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NAME']];
-        $planDescription             = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_DESCRIPTION']];
-        $planSellTimeFrom            = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_SELL_TIME_FROM']];
-        $planSellTimeTo              = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_SELL_TIME_TO']];
-        $planStartUpload             = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_START_UPLOAD']];
-        $planEndUpload               = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_END_UPLOAD']];
-        $planCourseMealBreakfast     = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_BREAKFAST']];
-        $planCourseMealDinner        = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_DINNER']];
-        $planCourseMealLunch         = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_LUNCH']];
-        $planAcceptBeforeDays        = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ACCEPT_BEFORE_DAYS']];
-        $planAcceptBeforeTime        = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ACCEPT_BEFORE_TIME']];
-        $planCheckinTimeFrom         = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKIN_TIME_FROM']];
-        $planCheckinTimeTo           = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKIN_TIME_TO']];
-        $planCheckoutTime            = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKOUT_TIME']];
-        $planTaxType                 = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_TAX_TYPE']];
-        $planLimitedQuantity         = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_LIMITED_QUANTITY']];
-        $planCancellationPolicy      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CANCELLATION_POLICY']];
-        $planMinPerson               = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_MIN_PERSON']];
-        $planMaxPerson               = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_MAX_PERSON']];
-        $planFeeChildHighAccept      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_ACCEPT']];
-        $planFeeChildHighCount       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_COUNT']];
-        $planFeeChildHighValue       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_VALUE']];
-        $planFeeChildHighUnitOption  = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_UNIT_OPTION']];
-        $planFeeChildLowAccept       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_ACCEPT']];
-        $planFeeChildLowCount        = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_COUNT']];
-        $planFeeChildLowValue        = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_VALUE']];
-        $planFeeChildLowUnitOption   = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_UNIT_OPTION']];
-        $planFeeChildMealSleepAccept = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_ACCEPT']];
-        $planFeeChildMealSleepCount  = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_COUNT']];
-        $planFeeChildMealSleepValue  = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_VALUE']];
-        $planFeeChildMealSleepOption = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_OPTION']];
-        $planFeeChildMealAccept      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_ACCEPT']];
-        $planFeeChildMealCount       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_COUNT']];
-        $planFeeChildMealValue       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_VALUE']];
-        $planFeeChildMealOption      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_OPTION']];
-        $planFeeChildSleepAccept     = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_ACCEPT']];
-        $planFeeChildSleepCount      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_COUNT']];
-        $planFeeChildSleepValue      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_VALUE']];
-        $planFeeChildSleepOption     = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_OPTION']];
-        $planFeeChildNoneAccept      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_ACCEPT']];
-        $planFeeChildNoneCount       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_COUNT']];
-        $planFeeChildNoneValue       = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_VALUE']];
-        $planFeeChildNoneOption      = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_OPTION']];
-        $planNightStayFrom           = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NIGHT_STAY_FROM']];
-        $planNightStayTo             = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NIGHT_STAY_TO']];
-        $planUpdatedAt               = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_UPDATED_AT']];
-        $planUseType                 = $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_USE_TYPE']];
+        $roomStatus                  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['ROOM_STATUS']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['ROOM_STATUS']] : null;
+        $planName                    = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NAME']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NAME']] : null;
+        $planDescription             = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_DESCRIPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_DESCRIPTION']] : null;
+        $planSellTimeFrom            = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_SELL_TIME_FROM']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_SELL_TIME_FROM']] : null;
+        $planSellTimeTo              = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_SELL_TIME_TO']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_SELL_TIME_TO']] : null;
+        $planStartUpload             = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_START_UPLOAD']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_START_UPLOAD']] : null;
+        $planEndUpload               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_END_UPLOAD']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_END_UPLOAD']] : null;
+        $planCourseMealBreakfast     = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_BREAKFAST']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_BREAKFAST']] : null;
+        $planCourseMealDinner        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_DINNER']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_DINNER']] : null;
+        $planCourseMealLunch         = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_LUNCH']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_COURSE_MEAL_LUNCH']] : null;
+        $planAcceptBeforeDays        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ACCEPT_BEFORE_DAYS']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ACCEPT_BEFORE_DAYS']] : null;
+        $planAcceptBeforeTime        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ACCEPT_BEFORE_TIME']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_ACCEPT_BEFORE_TIME']] : null;
+        $planCheckinTimeFrom         = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKIN_TIME_FROM']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKIN_TIME_FROM']] : null;
+        $planCheckinTimeTo           = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKIN_TIME_TO']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKIN_TIME_TO']] : null;
+        $planCheckoutTime            = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKOUT_TIME']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CHECKOUT_TIME']] : null;
+        $planTaxType                 = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_TAX_TYPE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_TAX_TYPE']] : null;
+        $planLimitedQuantity         = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_LIMITED_QUANTITY']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_LIMITED_QUANTITY']] : null;
+        $planCancellationPolicy      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CANCELLATION_POLICY']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_CANCELLATION_POLICY']] : null;
+        $planMinPerson               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_MIN_PERSON']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_MIN_PERSON']] : null;
+        $planMaxPerson               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_MAX_PERSON']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_MAX_PERSON']] : null;
+        $planFeeChildHighAccept      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_ACCEPT']] : null;
+        $planFeeChildHighCount       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_COUNT']] : null;
+        $planFeeChildHighValue       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_VALUE']] : null;
+        $planFeeChildHighUnitOption  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_UNIT_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_HIGH_UNIT_OPTION']] : null;
+        $planFeeChildLowAccept       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_ACCEPT']] : null;
+        $planFeeChildLowCount        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_COUNT']] : null;
+        $planFeeChildLowValue        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_VALUE']] : null;
+        $planFeeChildLowUnitOption   = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_UNIT_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_LOW_UNIT_OPTION']] : null;
+        $planFeeChildMealSleepAccept = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_ACCEPT']] : null;
+        $planFeeChildMealSleepCount  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_COUNT']] : null;
+        $planFeeChildMealSleepValue  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_VALUE']] : null;
+        $planFeeChildMealSleepOption = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_SLEEP_OPTION']] : null;
+        $planFeeChildMealAccept      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_ACCEPT']] : null;
+        $planFeeChildMealCount       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_COUNT']] : null;
+        $planFeeChildMealValue       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_VALUE']] : null;
+        $planFeeChildMealOption      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_MEAL_OPTION']] : null;
+        $planFeeChildSleepAccept     = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_ACCEPT']] : null;
+        $planFeeChildSleepCount      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_COUNT']] : null;
+        $planFeeChildSleepValue      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_VALUE']] : null;
+        $planFeeChildSleepOption     = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_SLEEP_OPTION']] : null;
+        $planFeeChildNoneAccept      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_ACCEPT']] : null;
+        $planFeeChildNoneCount       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_COUNT']] : null;
+        $planFeeChildNoneValue       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_VALUE']] : null;
+        $planFeeChildNoneOption      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_FEE_CHILD_NONE_OPTION']] : null;
+        $planNightStayFrom           = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NIGHT_STAY_FROM']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NIGHT_STAY_FROM']] : null;
+        $planNightStayTo             = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NIGHT_STAY_TO']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_NIGHT_STAY_TO']] : null;
+        $planUpdatedAt               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_UPDATED_AT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_UPDATED_AT']] : null;
+        $planUseType                 = filled($item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_USE_TYPE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE['PLAN_USE_TYPE']] : null;
         return array(
             $roomStatus,
             $planName,
@@ -278,55 +278,55 @@ class TlLincolnService
      */
     public function extractedPlanDiff(array $item): array
     {
-        $roomStatus                  = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['ROOM_STATUS']];
-        $planName                    = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NAME']];
-        $planDescription             = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_DESCRIPTION']];
-        $planSellTimeFrom            = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_SELL_TIME_FROM']];
-        $planSellTimeTo              = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_SELL_TIME_TO']];
-        $planStartUpload             = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_START_UPLOAD']];
-        $planEndUpload               = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_END_UPLOAD']];
-        $planCourseMealBreakfast     = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_BREAKFAST']];
-        $planCourseMealDinner        = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_DINNER']];
-        $planCourseMealLunch         = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_LUNCH']];
-        $planAcceptBeforeDays        = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_ACCEPT_BEFORE_DAYS']];
-        $planAcceptBeforeTime        = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_ACCEPT_BEFORE_TIME']];
-        $planCheckinTimeFrom         = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKIN_TIME_FROM']];
-        $planCheckinTimeTo           = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKIN_TIME_TO']];
-        $planCheckoutTime            = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKOUT_TIME']];
-        $planTaxType                 = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_TAX_TYPE']];
-        $planLimitedQuantity         = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_LIMITED_QUANTITY']];
-        $planCancellationPolicy      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CANCELLATION_POLICY']];
-        $planMinPerson               = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_MIN_PERSON']];
-        $planMaxPerson               = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_MAX_PERSON']];
-        $planFeeChildHighAccept      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_ACCEPT']];
-        $planFeeChildHighCount       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_COUNT']];
-        $planFeeChildHighValue       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_VALUE']];
-        $planFeeChildHighUnitOption  = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_UNIT_OPTION']];
-        $planFeeChildLowAccept       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_ACCEPT']];
-        $planFeeChildLowCount        = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_COUNT']];
-        $planFeeChildLowValue        = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_VALUE']];
-        $planFeeChildLowUnitOption   = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_UNIT_OPTION']];
-        $planFeeChildMealSleepAccept = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_ACCEPT']];
-        $planFeeChildMealSleepCount  = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_COUNT']];
-        $planFeeChildMealSleepValue  = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_VALUE']];
-        $planFeeChildMealSleepOption = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_OPTION']];
-        $planFeeChildMealAccept      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_ACCEPT']];
-        $planFeeChildMealCount       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_COUNT']];
-        $planFeeChildMealValue       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_VALUE']];
-        $planFeeChildMealOption      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_OPTION']];
-        $planFeeChildSleepAccept     = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_ACCEPT']];
-        $planFeeChildSleepCount      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_COUNT']];
-        $planFeeChildSleepValue      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_VALUE']];
-        $planFeeChildSleepOption     = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_OPTION']];
-        $planFeeChildNoneAccept      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_ACCEPT']];
-        $planFeeChildNoneCount       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_COUNT']];
-        $planFeeChildNoneValue       = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_VALUE']];
-        $planFeeChildNoneOption      = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_OPTION']];
-        $planNightStayFrom           = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NIGHT_STAY_FROM']];
-        $planNightStayTo             = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NIGHT_STAY_TO']];
-        $planUpdatedAt               = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_UPDATED_AT']];
-        $planUpdateType              = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_UPDATE_TYPE']];
-        $planUseType                 = $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_USE_TYPE']];
+        $roomStatus                  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['ROOM_STATUS']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['ROOM_STATUS']] : null;
+        $planName                    = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NAME']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NAME']] : null;
+        $planDescription             = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_DESCRIPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_DESCRIPTION']] : null;
+        $planSellTimeFrom            = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_SELL_TIME_FROM']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_SELL_TIME_FROM']] : null;
+        $planSellTimeTo              = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_SELL_TIME_TO']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_SELL_TIME_TO']] : null;
+        $planStartUpload             = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_START_UPLOAD']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_START_UPLOAD']] : null;
+        $planEndUpload               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_END_UPLOAD']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_END_UPLOAD']] : null;
+        $planCourseMealBreakfast     = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_BREAKFAST']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_BREAKFAST']] : null;
+        $planCourseMealDinner        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_DINNER']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_DINNER']] : null;
+        $planCourseMealLunch         = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_LUNCH']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_COURSE_MEAL_LUNCH']] : null;
+        $planAcceptBeforeDays        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_ACCEPT_BEFORE_DAYS']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_ACCEPT_BEFORE_DAYS']] : null;
+        $planAcceptBeforeTime        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_ACCEPT_BEFORE_TIME']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_ACCEPT_BEFORE_TIME']] : null;
+        $planCheckinTimeFrom         = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKIN_TIME_FROM']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKIN_TIME_FROM']] : null;
+        $planCheckinTimeTo           = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKIN_TIME_TO']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKIN_TIME_TO']] : null;
+        $planCheckoutTime            = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKOUT_TIME']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CHECKOUT_TIME']] : null;
+        $planTaxType                 = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_TAX_TYPE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_TAX_TYPE']] : null;
+        $planLimitedQuantity         = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_LIMITED_QUANTITY']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_LIMITED_QUANTITY']] : null;
+        $planCancellationPolicy      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CANCELLATION_POLICY']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_CANCELLATION_POLICY']] : null;
+        $planMinPerson               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_MIN_PERSON']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_MIN_PERSON']] : null;
+        $planMaxPerson               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_MAX_PERSON']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_MAX_PERSON']] : null;
+        $planFeeChildHighAccept      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_ACCEPT']] : null;
+        $planFeeChildHighCount       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_COUNT']] : null;
+        $planFeeChildHighValue       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_VALUE']] : null;
+        $planFeeChildHighUnitOption  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_UNIT_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_HIGH_UNIT_OPTION']] : null;
+        $planFeeChildLowAccept       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_ACCEPT']] : null;
+        $planFeeChildLowCount        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_COUNT']] : null;
+        $planFeeChildLowValue        = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_VALUE']] : null;
+        $planFeeChildLowUnitOption   = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_UNIT_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_LOW_UNIT_OPTION']] : null;
+        $planFeeChildMealSleepAccept = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_ACCEPT']] : null;
+        $planFeeChildMealSleepCount  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_COUNT']] : null;
+        $planFeeChildMealSleepValue  = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_VALUE']] : null;
+        $planFeeChildMealSleepOption = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_SLEEP_OPTION']] : null;
+        $planFeeChildMealAccept      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_ACCEPT']] : null;
+        $planFeeChildMealCount       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_COUNT']] : null;
+        $planFeeChildMealValue       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_VALUE']] : null;
+        $planFeeChildMealOption      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_MEAL_OPTION']] : null;
+        $planFeeChildSleepAccept     = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_ACCEPT']] : null;
+        $planFeeChildSleepCount      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_COUNT']] : null;
+        $planFeeChildSleepValue      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_VALUE']] : null;
+        $planFeeChildSleepOption     = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_SLEEP_OPTION']] : null;
+        $planFeeChildNoneAccept      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_ACCEPT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_ACCEPT']] : null;
+        $planFeeChildNoneCount       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_COUNT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_COUNT']] : null;
+        $planFeeChildNoneValue       = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_VALUE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_VALUE']] : null;
+        $planFeeChildNoneOption      = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_OPTION']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_FEE_CHILD_NONE_OPTION']] : null;
+        $planNightStayFrom           = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NIGHT_STAY_FROM']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NIGHT_STAY_FROM']] : null;
+        $planNightStayTo             = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NIGHT_STAY_TO']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_NIGHT_STAY_TO']] : null;
+        $planUpdatedAt               = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_UPDATED_AT']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_UPDATED_AT']] : null;
+        $planUpdateType              = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_UPDATE_TYPE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_UPDATE_TYPE']] : null;
+        $planUseType                 = filled($item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_USE_TYPE']]) ? $item[TlLincolnPlan::CSV_ATTRIBUTE_DIFF['PLAN_USE_TYPE']] : null;
         return array(
             $roomStatus,
             $planName,
@@ -1021,10 +1021,10 @@ class TlLincolnService
                 'tllincoln_plan_id'                          => $planId,
                 'tllincoln_plan_name'                        => $planName,
                 'tllincoln_plan_description'                 => $planDescription,
-                'tllincoln_plan_sell_time_from'              => $planSellTimeFrom ?: null,
-                'tllincoln_plan_sell_time_to'                => $planSellTimeTo ?: null,
-                'tllincoln_plan_start_upload'                => $planStartUpload ?: null,
-                'tllincoln_plan_end_upload'                  => $planEndUpload ?: null,
+                'tllincoln_plan_sell_time_from'              => $planSellTimeFrom,
+                'tllincoln_plan_sell_time_to'                => $planSellTimeTo,
+                'tllincoln_plan_start_upload'                => $planStartUpload,
+                'tllincoln_plan_end_upload'                  => $planEndUpload,
                 'tllincoln_plan_course_meal_breakfast'       => $planCourseMealBreakfast,
                 'tllincoln_plan_course_meal_dinner'          => $planCourseMealDinner,
                 'tllincoln_plan_course_meal_lunch'           => $planCourseMealLunch,
@@ -1034,37 +1034,37 @@ class TlLincolnService
                 'tllincoln_plan_checkin_time_to'             => $planCheckinTimeTo,
                 'tllincoln_plan_checkout_time'               => $planCheckoutTime,
                 'tllincoln_plan_tax_type'                    => $planTaxType,
-                'tllincoln_plan_limited_quantity'            => $planLimitedQuantity !== "" ? $item[28] : null,
+                'tllincoln_plan_limited_quantity'            => $planLimitedQuantity,
                 'tllincoln_plan_cancellation_policy'         => $planCancellationPolicy,
                 'tllincoln_plan_min_person'                  => $planMinPerson,
                 'tllincoln_plan_max_person'                  => $planMaxPerson,
                 'tllincoln_plan_fee_child_high_accept'       => $planFeeChildHighAccept,
                 'tllincoln_plan_fee_child_high_count'        => $planFeeChildHighCount,
-                'tllincoln_plan_fee_child_high_value'        => $planFeeChildHighValue !== "" ? $item[34] : null,
-                'tllincoln_plan_fee_child_high_unit_option'  => $planFeeChildHighUnitOption ?: null,
+                'tllincoln_plan_fee_child_high_value'        => $planFeeChildHighValue,
+                'tllincoln_plan_fee_child_high_unit_option'  => $planFeeChildHighUnitOption,
                 'tllincoln_plan_fee_child_low_accept'        => $planFeeChildLowAccept,
                 'tllincoln_plan_fee_child_low_count'         => $planFeeChildLowCount,
-                'tllincoln_plan_fee_child_low_value'         => $planFeeChildLowValue !== "" ? $item[38] : null,
-                'tllincoln_plan_fee_child_low_unit_option'   => $planFeeChildLowUnitOption ?: null,
+                'tllincoln_plan_fee_child_low_value'         => $planFeeChildLowValue,
+                'tllincoln_plan_fee_child_low_unit_option'   => $planFeeChildLowUnitOption,
                 'tllincoln_plan_fee_child_meal_sleep_accept' => $planFeeChildMealSleepAccept,
                 'tllincoln_plan_fee_child_meal_sleep_count'  => $planFeeChildMealSleepCount,
-                'tllincoln_plan_fee_child_meal_sleep_value'  => $planFeeChildMealSleepValue !== "" ? $item[42] : null,
-                'tllincoln_plan_fee_child_meal_sleep_option' => $planFeeChildMealSleepOption ?: null,
+                'tllincoln_plan_fee_child_meal_sleep_value'  => $planFeeChildMealSleepValue,
+                'tllincoln_plan_fee_child_meal_sleep_option' => $planFeeChildMealSleepOption,
                 'tllincoln_plan_fee_child_meal_accept'       => $planFeeChildMealAccept,
                 'tllincoln_plan_fee_child_meal_count'        => $planFeeChildMealCount,
-                'tllincoln_plan_fee_child_meal_value'        => $planFeeChildMealValue !== "" ? $item[46] : null,
-                'tllincoln_plan_fee_child_meal_option'       => $planFeeChildMealOption ?: null,
+                'tllincoln_plan_fee_child_meal_value'        => $planFeeChildMealValue,
+                'tllincoln_plan_fee_child_meal_option'       => $planFeeChildMealOption,
                 'tllincoln_plan_fee_child_sleep_accept'      => $planFeeChildSleepAccept,
                 'tllincoln_plan_fee_child_sleep_count'       => $planFeeChildSleepCount,
-                'tllincoln_plan_fee_child_sleep_value'       => $planFeeChildSleepValue !== "" ? $item[50] : null,
-                'tllincoln_plan_fee_child_sleep_option'      => $planFeeChildSleepOption ?: null,
+                'tllincoln_plan_fee_child_sleep_value'       => $planFeeChildSleepValue,
+                'tllincoln_plan_fee_child_sleep_option'      => $planFeeChildSleepOption,
                 'tllincoln_plan_fee_child_none_accept'       => $planFeeChildNoneAccept,
                 'tllincoln_plan_fee_child_none_count'        => $planFeeChildNoneCount,
-                'tllincoln_plan_fee_child_none_value'        => $planFeeChildNoneValue !== "" ? $item[54] : null,
-                'tllincoln_plan_fee_child_none_option'       => $planFeeChildNoneOption ?: null,
-                'tllincoln_plan_night_stay_from'             => $planNightStayFrom ?: null,
-                'tllincoln_plan_night_stay_to'               => $planNightStayTo ?: null,
-                'tllincoln_plan_updated_at'                  => $planUpdatedAt ?: null,
+                'tllincoln_plan_fee_child_none_value'        => $planFeeChildNoneValue,
+                'tllincoln_plan_fee_child_none_option'       => $planFeeChildNoneOption,
+                'tllincoln_plan_night_stay_from'             => $planNightStayFrom,
+                'tllincoln_plan_night_stay_to'               => $planNightStayTo,
+                'tllincoln_plan_updated_at'                  => $planUpdatedAt,
                 'tllincoln_plan_use_type'                    => $planUseType,
                 'tllincoln_plan_cancel_id'                   => null,
             ];
@@ -1164,10 +1164,10 @@ class TlLincolnService
                 'tllincoln_plan_id'                          => $planId,
                 'tllincoln_plan_name'                        => $planName,
                 'tllincoln_plan_description'                 => $planDescription,
-                'tllincoln_plan_sell_time_from'              => $planSellTimeFrom ?: null,
-                'tllincoln_plan_sell_time_to'                => $planSellTimeTo ?: null,
-                'tllincoln_plan_start_upload'                => $planStartUpload ?: null,
-                'tllincoln_plan_end_upload'                  => $planEndUpload ?: null,
+                'tllincoln_plan_sell_time_from'              => $planSellTimeFrom,
+                'tllincoln_plan_sell_time_to'                => $planSellTimeTo,
+                'tllincoln_plan_start_upload'                => $planStartUpload,
+                'tllincoln_plan_end_upload'                  => $planEndUpload,
                 'tllincoln_plan_course_meal_breakfast'       => $planCourseMealBreakfast,
                 'tllincoln_plan_course_meal_dinner'          => $planCourseMealDinner,
                 'tllincoln_plan_course_meal_lunch'           => $planCourseMealLunch,
@@ -1177,37 +1177,37 @@ class TlLincolnService
                 'tllincoln_plan_checkin_time_to'             => $planCheckinTimeTo,
                 'tllincoln_plan_checkout_time'               => $planCheckoutTime,
                 'tllincoln_plan_tax_type'                    => $planTaxType,
-                'tllincoln_plan_limited_quantity'            => $planLimitedQuantity !== "" ? $item[28] : null,
+                'tllincoln_plan_limited_quantity'            => $planLimitedQuantity,
                 'tllincoln_plan_cancellation_policy'         => $planCancellationPolicy,
                 'tllincoln_plan_min_person'                  => $planMinPerson,
                 'tllincoln_plan_max_person'                  => $planMaxPerson,
                 'tllincoln_plan_fee_child_high_accept'       => $planFeeChildHighAccept,
                 'tllincoln_plan_fee_child_high_count'        => $planFeeChildHighCount,
-                'tllincoln_plan_fee_child_high_value'        => $planFeeChildHighValue !== "" ? $item[34] : null,
-                'tllincoln_plan_fee_child_high_unit_option'  => $planFeeChildHighUnitOption ?: null,
+                'tllincoln_plan_fee_child_high_value'        => $planFeeChildHighValue,
+                'tllincoln_plan_fee_child_high_unit_option'  => $planFeeChildHighUnitOption,
                 'tllincoln_plan_fee_child_low_accept'        => $planFeeChildLowAccept,
                 'tllincoln_plan_fee_child_low_count'         => $planFeeChildLowCount,
-                'tllincoln_plan_fee_child_low_value'         => $planFeeChildLowValue !== "" ? $item[38] : null,
-                'tllincoln_plan_fee_child_low_unit_option'   => $planFeeChildLowUnitOption ?: null,
+                'tllincoln_plan_fee_child_low_value'         => $planFeeChildLowValue,
+                'tllincoln_plan_fee_child_low_unit_option'   => $planFeeChildLowUnitOption,
                 'tllincoln_plan_fee_child_meal_sleep_accept' => $planFeeChildMealSleepAccept,
                 'tllincoln_plan_fee_child_meal_sleep_count'  => $planFeeChildMealSleepCount,
-                'tllincoln_plan_fee_child_meal_sleep_value'  => $planFeeChildMealSleepValue !== "" ? $item[42] : null,
-                'tllincoln_plan_fee_child_meal_sleep_option' => $planFeeChildMealSleepOption ?: null,
+                'tllincoln_plan_fee_child_meal_sleep_value'  => $planFeeChildMealSleepValue,
+                'tllincoln_plan_fee_child_meal_sleep_option' => $planFeeChildMealSleepOption,
                 'tllincoln_plan_fee_child_meal_accept'       => $planFeeChildMealAccept,
                 'tllincoln_plan_fee_child_meal_count'        => $planFeeChildMealCount,
-                'tllincoln_plan_fee_child_meal_value'        => $planFeeChildMealValue !== "" ? $item[46] : null,
-                'tllincoln_plan_fee_child_meal_option'       => $planFeeChildMealOption ?: null,
+                'tllincoln_plan_fee_child_meal_value'        => $planFeeChildMealValue,
+                'tllincoln_plan_fee_child_meal_option'       => $planFeeChildMealOption,
                 'tllincoln_plan_fee_child_sleep_accept'      => $planFeeChildSleepAccept,
                 'tllincoln_plan_fee_child_sleep_count'       => $planFeeChildSleepCount,
-                'tllincoln_plan_fee_child_sleep_value'       => $planFeeChildSleepValue !== "" ? $item[50] : null,
-                'tllincoln_plan_fee_child_sleep_option'      => $planFeeChildSleepOption ?: null,
+                'tllincoln_plan_fee_child_sleep_value'       => $planFeeChildSleepValue,
+                'tllincoln_plan_fee_child_sleep_option'      => $planFeeChildSleepOption,
                 'tllincoln_plan_fee_child_none_accept'       => $planFeeChildNoneAccept,
                 'tllincoln_plan_fee_child_none_count'        => $planFeeChildNoneCount,
-                'tllincoln_plan_fee_child_none_value'        => $planFeeChildNoneValue !== "" ? $item[54] : null,
-                'tllincoln_plan_fee_child_none_option'       => $planFeeChildNoneOption ?: null,
-                'tllincoln_plan_night_stay_from'             => $planNightStayFrom ?: null,
-                'tllincoln_plan_night_stay_to'               => $planNightStayTo ?: null,
-                'tllincoln_plan_updated_at'                  => $planUpdatedAt ?: null,
+                'tllincoln_plan_fee_child_none_value'        => $planFeeChildNoneValue,
+                'tllincoln_plan_fee_child_none_option'       => $planFeeChildNoneOption,
+                'tllincoln_plan_night_stay_from'             => $planNightStayFrom,
+                'tllincoln_plan_night_stay_to'               => $planNightStayTo,
+                'tllincoln_plan_updated_at'                  => $planUpdatedAt,
                 'tllincoln_plan_use_type'                    => $planUseType,
                 'tllincoln_plan_cancel_id'                   => null,
             ];

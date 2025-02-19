@@ -44,10 +44,10 @@ class PlanPriceFromTlLincoln extends Command
      */
     public function handle()
     {
-        Log::info("■■■ EmptyRoomFromTlLincoln Start ■■■");
-        $this->info("■■■ EmptyRoomFromTlLincoln Start ■■■");
+        Log::info("■■■ PlanPriceFromTlLincoln Start ■■■");
+        $this->info("■■■ PlanPriceFromTlLincoln Start ■■■");
         $this->tlLincolnService->getFileCsvPlanPrice();
-        Log::info("■■■ EmptyRoomFromTlLincoln End ■■■");
-        $this->info("■■■ EmptyRoomFromTlLincoln End ■■■");
+        Log::info("■■■ PlanPriceFromTlLincoln End ■■■");
+        $this->info("■■■ PlanPriceFromTlLincoln End ■■■");
     }
 }

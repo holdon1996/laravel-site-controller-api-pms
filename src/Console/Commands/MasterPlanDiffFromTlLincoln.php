@@ -22,7 +22,7 @@ class MasterPlanDiffFromTlLincoln extends Command
      */
     protected $description = 'Get master plan diff TL-Lincoln';
 
-    private TlLincolnService $tlLincolnService;
+    protected $tlLincolnService;
 
     public function __construct(TlLincolnService $tlLincolnService)
     {

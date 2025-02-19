@@ -22,7 +22,7 @@ class MasterPlanFromTlLincoln extends Command
      */
     protected $description = 'Get master plan TL-Lincoln';
 
-    private TlLincolnService $tlLincolnService;
+    protected $tlLincolnService;
 
     public function __construct(TlLincolnService $tlLincolnService)
     {

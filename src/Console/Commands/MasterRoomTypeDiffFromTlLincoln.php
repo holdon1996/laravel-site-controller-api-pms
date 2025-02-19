@@ -21,7 +21,7 @@ class MasterRoomTypeDiffFromTlLincoln extends Command
      * @var string
      */
     protected $description = 'Get master room type diff TL-Lincoln';
-    private TlLincolnService $tlLincolnService;
+    protected $tlLincolnService;
 
     public function __construct(TlLincolnService $tlLincolnService)
     {
