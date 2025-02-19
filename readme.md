@@ -58,5 +58,5 @@ run command:
 Add env key and value from packages/thachvd/laravel-site-controller-api/src/.env.example to .env
 
 ## Testing
-You can download postman collection in path ``` packages/thachvd/laravel-site-controller-api/src/postman/Laravel Site Controller API Package.postman_collection.json ``` and run server ``` php artisan serve ``` then test it.
+You can download postman collection in path ``` thachvd/laravel-site-controller-api/src/postman/Laravel Site Controller API Package.postman_collection.json ``` and run server ``` php artisan serve ``` then test it.
 
