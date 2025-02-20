@@ -407,8 +407,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_master_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -419,7 +419,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importMasterHotel($fileContent);
+            $this->importMasterHotel($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV getMasterHotel in S3 failed');
         }
@@ -444,8 +444,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_master_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -456,7 +456,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importMasterRoomType($fileContent);
+            $this->importMasterRoomType($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV getMasterRoomType in S3 failed');
         }
@@ -481,8 +481,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_partial_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -493,7 +493,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importMasterRoomTypeDiff($fileContent);
+            $this->importMasterRoomTypeDiff($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV getMasterRoomType in S3 failed');
         }
@@ -518,8 +518,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_master_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -530,7 +530,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importMasterPlan($fileContent);
+            $this->importMasterPlan($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV getMasterRoomType in S3 failed');
         }
@@ -555,8 +555,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_partial_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -567,7 +567,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importMasterPlanDiff($fileContent);
+            $this->importMasterPlanDiff($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV GetMasterHotel in S3 failed');
         }
@@ -592,8 +592,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_partial_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -604,7 +604,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importCsvEmptyRoom($fileContent);
+            $this->importCsvEmptyRoom($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV GetMasterHotel in S3 failed');
         }
@@ -629,8 +629,8 @@ class TlLincolnService
         $this->setQueryParams($queryParams);
 
         $url     = config('sc.tllincoln_api.get_partial_url');
-        $success = true;
-        [$fileName, $response] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        [$fileName, $responseObj] = $this->sendRequest("POST", $url, $this->client->query_params ?? [], $this->client->body ?? []);
+        $response = $responseObj['response'] ?? '';
         if (!$this->isValidResponse($response)) {
             \Log::info('not exist file master hotel from TL Lincoln at ' . now());
             return;
@@ -641,7 +641,7 @@ class TlLincolnService
 
         // import to db
         if ($fileContent) {
-            $this->importCsvPlanPrice($fileContent);
+            $this->importCsvPlanPrice($fileContent, $responseObj);
         } else {
             \Log::error('Create CSV GetMasterHotel in S3 failed');
         }
@@ -667,6 +667,7 @@ class TlLincolnService
      */
     public function sendRequest($method, $url, $query, $formParams)
     {
+        $isWriteLog = config('sc.is_write_log');
         try {
             $options            = [];
             $options['headers'] = $this->headers;
@@ -686,9 +687,11 @@ class TlLincolnService
         } catch (\Exception $e) {
             \Log::error("API url=$url error: " . $e->getMessage());
             \Log::error($e);
-            $tlLincolnApiResponse['status_code'] = 500;
-            $tlLincolnApiResponse['response']    = $e->getMessage();
-            $this->writeLogDB($tlLincolnApiResponse);
+            if ($isWriteLog) {
+                $tlLincolnApiResponse['status_code'] = $e->getResponse() ? $e->getResponse()->getStatusCode() : 500;
+                $tlLincolnApiResponse['response']    = $e->getMessage();
+                $this->writeLogDB($tlLincolnApiResponse);
+            }
             return null;
         }
         $fileName                            = null;
@@ -700,8 +703,10 @@ class TlLincolnService
         $tlLincolnApiResponse['response'] = trim(
             mb_convert_encoding($tlLincolnApiResponse['response'], "UTF-8", "auto, SJIS-win")
         );
-        $this->writeLogDB($tlLincolnApiResponse);
-        return [$fileName, $tlLincolnApiResponse['response']];
+        if ($isWriteLog) {
+            $this->writeLogDB($tlLincolnApiResponse);
+        }
+        return [$fileName, $tlLincolnApiResponse];
     }
 
     /**
@@ -728,7 +733,7 @@ class TlLincolnService
      * @param $fileContent
      * @return void
      */
-    public function importMasterHotel($fileContent)
+    public function importMasterHotel($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -773,14 +778,14 @@ class TlLincolnService
         // TODO update mapping hotel from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemHotel($fileContent);
+        $handler->mappingSystemHotel($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return void
      */
-    public function importMasterRoomType($fileContent)
+    public function importMasterRoomType($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -855,14 +860,14 @@ class TlLincolnService
         // TODO update mapping room from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemRoomType($fileContent);
+        $handler->mappingSystemRoomType($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return void
      */
-    public function importMasterRoomTypeDiff($fileContent)
+    public function importMasterRoomTypeDiff($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -942,14 +947,14 @@ class TlLincolnService
         // TODO update mapping room diff from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemRoomTypeDiff($fileContent);
+        $handler->mappingSystemRoomTypeDiff($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return void
      */
-    public function importMasterPlan($fileContent)
+    public function importMasterPlan($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -1085,14 +1090,14 @@ class TlLincolnService
         // TODO update mapping plan from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemPlan($fileContent);
+        $handler->mappingSystemPlan($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return void
      */
-    public function importMasterPlanDiff($fileContent)
+    public function importMasterPlanDiff($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -1229,14 +1234,14 @@ class TlLincolnService
         // TODO update mapping plan diff from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemPlanDiff($fileContent);
+        $handler->mappingSystemPlanDiff($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return void
      */
-    public function importCsvEmptyRoom($fileContent)
+    public function importCsvEmptyRoom($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -1280,14 +1285,14 @@ class TlLincolnService
         // TODO update mapping empty room from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemEmptyRoom($fileContent);
+        $handler->mappingSystemEmptyRoom($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return void
      */
-    public function importCsvPlanPrice($fileContent)
+    public function importCsvPlanPrice($fileContent, $responseObj)
     {
         $csvData   = $this->formatCsvContent($fileContent);
         $streamCSV = fopen('php://memory', 'r+');
@@ -1354,14 +1359,14 @@ class TlLincolnService
         // TODO update mapping plan price from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemPlanPrice($fileContent);
+        $handler->mappingSystemPlanPrice($fileContent, $responseObj);
     }
 
     /**
      * @param $fileContent
      * @return array|string|string[]
      */
-    public function formatCsvContent($fileContent)
+    public function formatCsvContent($fileContent, $responseObj)
     {
         $fileContent = trim(mb_convert_encoding($fileContent, "UTF-8", "auto, SJIS-win"));
         return str_replace('\\', '\\\\', $fileContent);
