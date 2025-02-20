@@ -1366,7 +1366,7 @@ class TlLincolnService
      * @param $fileContent
      * @return array|string|string[]
      */
-    public function formatCsvContent($fileContent, $responseObj)
+    public function formatCsvContent($fileContent)
     {
         $fileContent = trim(mb_convert_encoding($fileContent, "UTF-8", "auto, SJIS-win"));
         return str_replace('\\', '\\\\', $fileContent);
