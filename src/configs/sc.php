@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'is_write_log' => true, // config write log default of package
     'tllincoln' => [
         'booking_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapService::class,
         'mapping_data_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnMappingService::class,
