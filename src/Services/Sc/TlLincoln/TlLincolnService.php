@@ -855,7 +855,7 @@ class TlLincolnService
         // TODO update mapping room from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemRoomType($item);
+        $handler->mappingSystemRoomType($fileContent);
     }
 
     /**
@@ -942,7 +942,7 @@ class TlLincolnService
         // TODO update mapping room diff from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemRoomTypeDiff($item);
+        $handler->mappingSystemRoomTypeDiff($fileContent);
     }
 
     /**
@@ -1085,7 +1085,7 @@ class TlLincolnService
         // TODO update mapping plan from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemPlan($item);
+        $handler->mappingSystemPlan($fileContent);
     }
 
     /**
@@ -1229,7 +1229,7 @@ class TlLincolnService
         // TODO update mapping plan diff from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemPlanDiff($item);
+        $handler->mappingSystemPlanDiff($fileContent);
     }
 
     /**
@@ -1280,7 +1280,7 @@ class TlLincolnService
         // TODO update mapping empty room from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemEmptyRoom($item);
+        $handler->mappingSystemEmptyRoom($fileContent);
     }
 
     /**
@@ -1354,7 +1354,7 @@ class TlLincolnService
         // TODO update mapping plan price from tllincoln to system
         $handlerClass = config('sc.tllincoln.mapping_data_handler');
         $handler      = app($handlerClass);
-        $handler->mappingSystemPlanPrice($item);
+        $handler->mappingSystemPlanPrice($fileContent);
     }
 
     /**
