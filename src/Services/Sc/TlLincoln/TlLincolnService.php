@@ -762,11 +762,6 @@ class TlLincolnService
                             'tllincoln_hotel_phone'   => $item[4] ?: null,
                         ]);
                     }
-
-                    // TODO update mapping hotel from tllincoln to system
-                    $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                    $handler      = app($handlerClass);
-                    $handler->mappingSystemHotel($item);
                 }, 5);
             } catch (\Exception $e) {
                 \Log::error('Transaction failed: ' . $e->getMessage());
@@ -774,6 +769,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping hotel from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemHotel($fileContent);
     }
 
     /**
@@ -844,10 +844,6 @@ class TlLincolnService
             try {
                 \DB::transaction(function () use ($searchData, $saveData, $item) {
                     TlLincolnRoomType::updateOrCreate($searchData, $saveData);
-                    // TODO update mapping room from tllincoln to system
-                    $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                    $handler      = app($handlerClass);
-                    $handler->mappingSystemRoomType($item);
                 }, 5);
             } catch (\Exception $e) {
                 \Log::error('Transaction failed: ' . $e->getMessage());
@@ -855,6 +851,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping room from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemRoomType($item);
     }
 
     /**
@@ -929,10 +930,6 @@ class TlLincolnService
                 try {
                     \DB::transaction(function () use ($searchData, $saveData, $item) {
                         TlLincolnRoomType::updateOrCreate($searchData, $saveData);
-                        // TODO update mapping room from tllincoln to system
-                        $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                        $handler      = app($handlerClass);
-                        $handler->mappingSystemRoomTypeDiff($item);
                     }, 5);
                 } catch (\Exception $e) {
                     \Log::error('Transaction failed: ' . $e->getMessage());
@@ -941,6 +938,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping room diff from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemRoomTypeDiff($item);
     }
 
     /**
@@ -1072,10 +1074,6 @@ class TlLincolnService
             try {
                 \DB::transaction(function () use ($searchData, $saveData, $item) {
                     TlLincolnPlan::updateOrCreate($searchData, $saveData);
-                    // TODO update mapping plan from tllincoln to system
-                    $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                    $handler      = app($handlerClass);
-                    $handler->mappingSystemPlan($item);
                 }, 5);
             } catch (\Exception $e) {
                 \Log::error('Transaction failed: ' . $e->getMessage());
@@ -1083,6 +1081,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping plan from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemPlan($item);
     }
 
     /**
@@ -1215,10 +1218,6 @@ class TlLincolnService
             try {
                 \DB::transaction(function () use ($searchData, $saveData, $item) {
                     TlLincolnPlan::updateOrCreate($searchData, $saveData);
-                    // TODO update mapping plan from tllincoln to system
-                    $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                    $handler      = app($handlerClass);
-                    $handler->mappingSystemPlanDiff($item);
                 }, 5);
             } catch (\Exception $e) {
                 \Log::error('Transaction failed: ' . $e->getMessage());
@@ -1226,6 +1225,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping plan diff from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemPlanDiff($item);
     }
 
     /**
@@ -1265,10 +1269,6 @@ class TlLincolnService
             try {
                 \DB::transaction(function () use ($searchData, $saveData, $item) {
                     TlLincolnEmptyRoom::updateOrCreate($searchData, $saveData);
-                    // TODO update mapping room from tllincoln to system
-                    $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                    $handler      = app($handlerClass);
-                    $handler->mappingSystemEmptyRoom($item);
                 }, 5);
             } catch (\Exception $e) {
                 \Log::error('Transaction failed: ' . $e->getMessage());
@@ -1276,6 +1276,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping empty room from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemEmptyRoom($item);
     }
 
     /**
@@ -1338,10 +1343,6 @@ class TlLincolnService
             try {
                 \DB::transaction(function () use ($searchData, $saveData, $item) {
                     TlLincolnPlanPrice::updateOrCreate($searchData, $saveData);
-                    // TODO update mapping room from tllincoln to system
-                    $handlerClass = config('sc.tllincoln.mapping_data_handler');
-                    $handler      = app($handlerClass);
-                    $handler->mappingSystemPlanPrice($item);
                 }, 5);
             } catch (\Exception $e) {
                 \Log::error('Transaction failed: ' . $e->getMessage());
@@ -1349,6 +1350,11 @@ class TlLincolnService
         }
 
         fclose($streamCSV);
+
+        // TODO update mapping plan price from tllincoln to system
+        $handlerClass = config('sc.tllincoln.mapping_data_handler');
+        $handler      = app($handlerClass);
+        $handler->mappingSystemPlanPrice($item);
     }
 
     /**
