@@ -28,9 +28,7 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         );
 
         if (file_exists(config_path('sc_filesystems.php'))) {
-            if (file_exists(config_path('sc_filesystems.php'))) {
-                $this->mergeConfigFrom(config_path('sc_filesystems.php'), 'filesystems.disks');
-            }
+            $this->mergeConfigFrom(config_path('sc_filesystems.php'), 'filesystems.disks');
         }
 
         $this->commands([
