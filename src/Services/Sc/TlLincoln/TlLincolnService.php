@@ -420,7 +420,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importMasterHotel($fileContent, $responseObj);
+        $this->importMasterHotel(@$fileContent, $responseObj);
     }
 
     /**
@@ -455,7 +455,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importMasterRoomType($fileContent, $responseObj);
+        $this->importMasterRoomType(@$fileContent, $responseObj);
     }
 
     /**
@@ -490,7 +490,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importMasterRoomTypeDiff($fileContent, $responseObj);
+        $this->importMasterRoomTypeDiff(@$fileContent, $responseObj);
     }
 
     /**
@@ -525,7 +525,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importMasterPlan($fileContent, $responseObj);
+        $this->importMasterPlan(@$fileContent, $responseObj);
     }
 
     /**
@@ -560,7 +560,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importMasterPlanDiff($fileContent, $responseObj);
+        $this->importMasterPlanDiff(@$fileContent, $responseObj);
     }
 
     /**
@@ -595,7 +595,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importCsvEmptyRoom($fileContent, $responseObj);
+        $this->importCsvEmptyRoom(@$fileContent, $responseObj);
     }
 
     /**
@@ -630,7 +630,7 @@ class TlLincolnService
         }
 
         // import to db
-        $this->importCsvPlanPrice($fileContent, $responseObj);
+        $this->importCsvPlanPrice(@$fileContent, $responseObj);
     }
 
     /**
