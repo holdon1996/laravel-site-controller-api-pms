@@ -39,6 +39,7 @@ class TlLincolnSoapService
      */
     public function getEmptyRoom(Request $request)
     {
+        $isWriteLog = config('sc.is_write_log');
         $dateValidation = $this->validateAndParseDates($request);
         if (isset($dateValidation['success']) && !$dateValidation['success']) {
             return $dateValidation;
@@ -72,19 +73,23 @@ class TlLincolnSoapService
             } else {
                 $success = false;
             }
-
-            $soapApiLog['response']   = $response;
-            $soapApiLog['is_success'] = $success;
-            ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            if ($isWriteLog) {
+                $soapApiLog['response']   = $response;
+                $soapApiLog['is_success'] = $success;
+                ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            }
 
             return response()->json([
                 'success' => $success,
                 'data'    => $data,
+                'xmlResponse' => $response
             ]);
         } catch (\Exception $e) {
-            $soapApiLog['response']   = $e->getMessage();
-            $soapApiLog['is_success'] = false;
-            ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            if ($isWriteLog) {
+                $soapApiLog['response']   = $e->getMessage();
+                $soapApiLog['is_success'] = false;
+                ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            }
 
             return response()->json([
                 'success' => false,
@@ -157,6 +162,7 @@ class TlLincolnSoapService
      */
     public function getPricePlan(Request $request)
     {
+        $isWriteLog = config('sc.is_write_log');
         $dateValidation = $this->validateAndParseDates($request);
         if (isset($dateValidation['success']) && !$dateValidation['success']) {
             return $dateValidation;
@@ -189,18 +195,23 @@ class TlLincolnSoapService
                 $success = false;
             }
 
-            $soapApiLog['response']   = $response;
-            $soapApiLog['is_success'] = $success;
-            ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            if ($isWriteLog) {
+                $soapApiLog['response']   = $response;
+                $soapApiLog['is_success'] = $success;
+                ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            }
 
             return response()->json([
                 'success' => $success,
                 'data'    => $data,
+                'xmlResponse' => $response
             ]);
         } catch (\Exception $e) {
-            $soapApiLog['response']   = $e->getMessage();
-            $soapApiLog['is_success'] = false;
-            ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            if ($isWriteLog) {
+                $soapApiLog['response']   = $e->getMessage();
+                $soapApiLog['is_success'] = false;
+                ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            }
 
             return response()->json([
                 'success' => false,
@@ -284,40 +295,77 @@ class TlLincolnSoapService
      * @param Request $request
      * @return mixed
      */
-    public function preCheckCreateBooking(Request $request)
+    public function preCheckCreateBooking($request)
     {
         $url     = config('sc.tllincoln_api.check_pre_booking_url');
         $command = 'preBooking';
 
         $response = $this->processBooking($url, $command, $request);
 
-        return response()->json($response);
+        return $response;
     }
 
     /**
-     * @param Request $request
+     * @param $request
      * @return mixed
      */
-    public function entryBooking(Request $request)
+    public function entryBooking($request)
     {
         $url     = config('sc.tllincoln_api.entry_booking_url');
         $command = 'entryBooking';
 
         $response = $this->processBooking($url, $command, $request);
 
-        return response()->json($response);
+        return $response;
+    }
+
+    /**
+     * @param $request
+     * @return mixed
+     */
+    public function cancelBooking($request)
+    {
+        $url     = config('sc.tllincoln_api.cancel_booking_url');
+        $command = 'deleteBookingWithCP';
+
+        $response = $this->processBooking($url, $command, $request);
+
+        return $response;
+    }
+
+    /**
+     * Prepare TLL Soap Body
+     *
+     * @param $command
+     * @param array $dataRequest
+     * @param $naifVersion
+     * @return void
+     * @throws Exception
+     */
+    public function prepareTllSoapBody($command, $dataRequest)
+    {
+        $userInfo = [
+            'agtId'       => config('sc.tllincoln_api.agt_id'),
+            'agtPassword' => config('sc.tllincoln_api.agt_password')
+        ];
+        $naifVersion = config('sc.tllincoln_api.naif_xml_version.naif_3000');
+        $this->tlLincolnSoapBody->setMainBodyWrapSection($command . 'Request');
+        $body = $this->tlLincolnSoapBody->generateBody($command, $dataRequest, $naifVersion, $userInfo);
+        $this->tlLincolnSoapClient->setHeaders();
+        $this->tlLincolnSoapClient->setBody($body);
     }
 
     /**
      * @param $url
      * @param $command
-     * @param Request $request
+     * @param $request
      * @return mixed
      */
-    public function processBooking($url, $command, Request $request)
+    public function processBooking($url, $command, $request)
     {
-        $dataRequest = $this->setCreateBookingSoapRequest($request);
+        $this->prepareTllSoapBody($command,$request);
         try {
+            $isWriteLog = config('sc.is_write_log');
             $soapApiLog = [
                 'data_id' => ScTlLincolnSoapApiLog::genDataId(),
                 'url'     => $url,
@@ -353,314 +401,32 @@ class TlLincolnSoapService
             } else {
                 $success = false;
             }
-
             $soapApiLog['response']   = $response;
             $soapApiLog['is_success'] = $success;
-            ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            if ($isWriteLog) {
+                ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            }
 
             return response()->json([
                 'success' => $success,
                 'message' => $success ? [] : $message,
                 'data'    => $data,
+                'xmlResponse' => $response
             ]);
+
         } catch (\Exception $e) {
             $soapApiLog['response']   = $e->getMessage();
             $soapApiLog['is_success'] = false;
-            ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            if ($isWriteLog) {
+                ScTlLincolnSoapApiLog::createLog($soapApiLog);
+            }
 
             return response()->json([
                 'success' => false,
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'xmlResponse' => $response
             ]);
         }
-    }
-
-    /**
-     * @param Request $request
-     * @return array
-     */
-    public function setCreateBookingSoapRequest(Request $request)
-    {
-        $tllHotelId                       = $request->get('tll_hotel_id');       // TODO pass tl lincoln hotel id
-        $tllBookingNumber                 = $request->get('tll_booking_number'); // TODO pass tl lincoln booking number
-        $dataClassification               = empty($tllBookingNumber) ? 'NewBookReport' : 'ModificationReport';
-        $bookingId                        = $request->get('booking_id');   // TODO pass booking id of system
-        $requestorId                      = $request->get('requestor_id'); // TODO apply for OTA
-        $useTllPlan                       = $request->get('use_tll_plan'); // TODO pass tl lincoln plan id
-        $totalAccommodationCharge         = 0;
-        $totalAccommodationConsumptionTax = 0;
-        $tlLincolnPlan                    = collect();
-        $bookingSystem                    = collect();
-        $tlLincolnMealBreakfast           = $tlLincolnPlan->tllincoln_plan_course_meal_breakfast; // TODO pass tl lincoln plan breakfast
-        $tlLincolnMealDinner              = $tlLincolnPlan->tllincoln_plan_course_meal_dinner;    // TODO pass tl lincoln plan dinner
-        $tlLincolnMealLunch               = $tlLincolnPlan->tllincoln_plan_course_meal_lunch;     // TODO pass tl lincoln plan lunch
-
-        switch (true) {
-            case ($tlLincolnMealBreakfast && $tlLincolnMealDinner && $tlLincolnMealLunch):
-                $tlLincolnMeals         = "Other";
-                $tlLincolnSpecificMeals = "IncludingBreakfastAndLunchAndDinner";
-                break;
-            case ($tlLincolnMealBreakfast && $tlLincolnMealDinner):
-                $tlLincolnMeals         = "1night2meals";
-                $tlLincolnSpecificMeals = "IncludingBreakfastAndDinner";
-                break;
-            case ($tlLincolnMealBreakfast && $tlLincolnMealLunch):
-                $tlLincolnMeals         = "1night2meals";
-                $tlLincolnSpecificMeals = "IncludingBreakfastAndLunch";
-                break;
-            case ($tlLincolnMealLunch && $tlLincolnMealDinner):
-                $tlLincolnMeals         = "1night2meals";
-                $tlLincolnSpecificMeals = "IncludingLunchAndDinner";
-                break;
-            case $tlLincolnMealLunch:
-                $tlLincolnMeals         = "Other";
-                $tlLincolnSpecificMeals = "IncludingLunch";
-                break;
-            case $tlLincolnMealDinner:
-                $tlLincolnMeals         = "Other";
-                $tlLincolnSpecificMeals = "IncludingDinner";
-                break;
-            case $tlLincolnMealBreakfast:
-                $tlLincolnMeals         = "1nightBreakfast";
-                $tlLincolnSpecificMeals = "IncludingBreakfast";
-                break;
-            default:
-                $tlLincolnMeals         = "WithoutMeal";
-                $tlLincolnSpecificMeals = "";
-        }
-
-        $accommodationName = ''; // TODO pass facility name of booking
-        $accommodationCode = ''; // TODO pass facility id of booking
-        $salesOfficeName   = ''; // TODO pass sales office name of booking
-        $salesOfficeCode   = ''; // TODO pass sales office code of booking
-        $bookingDate       = Carbon::parse($bookingSystem->created_at);
-        $checkInDate       = Carbon::parse($bookingSystem->checkin_date);
-        $checkOutDate      = Carbon::parse($bookingSystem->checkout_date);
-        $rooms             = json_decode($request->get('rooms'), true);
-        $checkInRooms      = collect($rooms[$checkInDate->format(config('sc.tllincoln_api.date_format'))]);
-        $people            = json_decode($request->get('people'), true);
-        // total child count or not count
-        $grandTotalPaxCount            = (int)$people['adult_qty']
-            + (int)$people['child_primary_school_qty']
-            + (int)$people['child_meal_and_mattress_qty']
-            + (int)$people['child_mattress_qty']
-            + (int)$people['child_meal_qty']
-            + (int)$people['child_not_meal_and_not_mattress_qty']
-            + (int)$people['no_count_child_primary_school_qty']
-            + (int)$people['no_count_child_meal_and_mattress_qty']
-            + (int)$people['no_count_child_mattress_qty']
-            + (int)$people['no_count_child_meal_qty']
-            + (int)$people['no_count_child_not_meal_and_not_mattress_qty'];
-        $roomQuatity                   = $bookingSystem->room_quantity;
-        $childCount                    = (int)$people['child_primary_school_qty'] > 0 ? (int)$people['child_primary_school_qty'] : (int)$people['no_count_child_primary_school_qty'];
-        $childMealAndMattressCount     = (int)$people['child_meal_and_mattress_qty'] > 0 ? (int)$people['child_meal_and_mattress_qty'] : (int)$people['no_count_child_meal_and_mattress_qty'];
-        $childMattressCount            = (int)$people['child_mattress_qty'] > 0 ? (int)$people['child_mattress_qty'] : (int)$people['no_count_child_mattress_qty'];
-        $childMealCount                = (int)$people['child_meal_qty'] > 0 ? (int)$people['child_meal_qty'] : (int)$people['no_count_child_meal_qty'];
-        $childNoMealAndNoMattressCount = (int)$people['child_not_meal_and_not_mattress_qty'] > 0 ? (int)$people['child_not_meal_and_not_mattress_qty'] : (int)$people['no_count_child_not_meal_and_not_mattress_qty'];
-        $plan                          = $bookingSystem->plan;
-
-        // TODO add model Plan
-        //$meals = [
-        //    Plan::COURSE_MEAL['TWO_MEALS'] => "1night2meals",
-        //    Plan::COURSE_MEAL['BREAKFAST_ONLY'] => "1nightBreakfast",
-        //    Plan::COURSE_MEAL['DINNER_ONLY'] => "Other",
-        //    Plan::COURSE_MEAL['NO_MEALS'] => "WithoutMeal",
-        //];
-        //$specificMeals = [
-        //    Plan::COURSE_MEAL['TWO_MEALS'] => "IncludingBreakfastAndDinner",
-        //    Plan::COURSE_MEAL['BREAKFAST_ONLY'] => "IncludingBreakfast",
-        //    Plan::COURSE_MEAL['DINNER_ONLY'] => "IncludingDinner",
-        //    Plan::COURSE_MEAL['NO_MEALS'] => "",
-        //];
-        //$otherService = [
-        //    CRSPlan::COURSE_MEAL['TWO_MEALS'] => "朝昼食付",
-        //    CRSPlan::COURSE_MEAL['BREAKFAST_ONLY'] => "",
-        //    CRSPlan::COURSE_MEAL['DINNER_ONLY'] => "",
-        //    CRSPlan::COURSE_MEAL['NO_MEALS'] => "",
-        //];
-
-        $options                        = json_decode($request->get('options'), true);
-        $reservations                   = json_decode($request->get('reservations'), true);
-        $slot                           = json_decode($request->get('slot'), true);
-        $totalAccommodationHotSpringTax = 0;
-        $period                         = CarbonPeriod::create($checkInDate, $checkOutDate);
-        foreach ($period as $stayDate) {
-            $stayDateStr = $stayDate->format(config('sc.tllincoln_api.date_format'));
-
-            // set options
-            if (isset($options[$stayDateStr])) {
-                foreach ($options[$stayDateStr] as $option) {
-                    $totalAccommodationCharge         += $option['amount'] ?? 0; // TODO change for charge
-                    $totalAccommodationConsumptionTax += $option['amount'] ?? 0; // TODO change for consumption tax
-                    $totalAccommodationHotSpringTax   += 0;                      // TODO change for onsen
-
-                    $itemOption = [
-                        "OptionDate"  => $stayDateStr,
-                        "OptionCode"  => '', // TODO change
-                        "Name"        => '', // TODO change option name
-                        "NameRequest" => '',
-                        "OptionCount" => $option['quantity'],   // TODO change option quantity
-                        "OptionRate"  => $option['unit_price'], // TODO change option unit price
-                    ];
-
-                    if (!isset($strOption["OptionList"])) {
-                        $strOption["OptionList"] = [$itemOption];
-                    } else {
-                        $strOption["OptionList"][] = $itemOption;
-                    }
-                }
-            }
-        }
-
-        $totalAccommodationDiscountPoints = 0;
-        $dataId                           = ScTlLincolnSoapApiLog::genDataId();
-        $taxLocal                         = "";
-        $amountClaimed                    = 0;
-        $pointsDiscountList               = 0;
-        $memberName                       = "";
-        $memberKanjiName                  = "";
-        $memberDateOfBirth                = "";
-        $memberGenderDiv                  = "";
-        $memberPhoneNumber                = "";
-        $memberEmail                      = "";
-        $memberPostalCode                 = "";
-        $memberAddress                    = "";
-        $strSlot                          = [];
-        $dataRequest                      = [
-            "extendLincoln"          => [
-                "tllHotelCode"     => $tllHotelId,
-                "useTllPlan"       => $useTllPlan,
-                "tllBookingNumber" => $tllBookingNumber,
-                "tllCharge"        => ""
-            ],
-            "SendInformation"        => [
-                "assignDiv" => 1,
-                "genderDiv" => 0,
-            ],
-            "AllotmentBookingReport" => [
-                "TransactionType"          => [
-                    "DataFrom"           => "FromTravelAgency",
-                    "DataClassification" => $dataClassification,
-                    "DataID"             => $dataId
-                ],
-                "AccommodationInformation" => [
-                    "AccommodationArea" => "",
-                    "AccommodationName" => mb_substr($accommodationName, 0, 15, 'UTF-8'),
-                    "AccommodationCode" => $accommodationCode,
-                    "ChainName"         => "",
-                ],
-                "SalesOfficeInformation"   => [
-                    "SalesOfficeCompanyName"    => "Staynavi",
-                    "SalesOfficeName"           => $salesOfficeName,
-                    "SalesOfficeCode"           => $salesOfficeCode,
-                    "SalesOfficePersonInCharge" => "",
-                    "SalesOfficeEmail"          => "",
-                    "SalesOfficePhoneNumber"    => "",
-                    "SalesOfficeFaxNumber"      => ""
-                ],
-                "BasicInformation"         => [
-                    "TravelAgencyBookingNumber"  => $bookingSystem->booking_code,
-                    "TravelAgencyBookingDate"    => $bookingDate->format(config('sc.tllincoln_api.date_format')),
-                    "TravelAgencyBookingTime"    => $bookingDate->format(config('sc.tllincoln_api.time_format')),
-                    "GuestOrGroupMiddleName"     => "",
-                    "GuestOrGroupNameSingleByte" => "", // TODO change
-                    "GuestOrGroupKanjiName"      => "", // TODO change
-                    "GuestOrGroupContactDiv"     => "",
-                    "GuestOrGroupCellularNumber" => "",
-                    "GuestOrGroupOfficeNumber"   => "",
-                    "GuestOrGroupPhoneNumber"    => "", // TODO change
-                    "GuestOrGroupEmail"          => "", // TODO change
-                    "GuestOrGroupPostalCode"     => "", // TODO change
-                    "GuestOrGroupAddress"        => "", // TODO change
-                    "GroupNameWelcomeBoard"      => "",
-                    "GuestGenderDiv"             => "", // TODO change
-                    "GuestGeneration"            => "",
-                    "GuestAge"                   => "",
-                    "CheckInDate"                => $checkInDate->format(config('sc.tllincoln_api.date_format')),
-                    "CheckInTime"                => "", // TODO change
-                    "CheckOutDate"               => $checkOutDate->format(config('sc.tllincoln_api.date_format')),
-                    "CheckOutTime"               => "", // TODO change
-                    "Nights"                     => $bookingSystem->stay_night_number,
-                    "Transportaion"              => "",
-                    "TotalRoomCount"             => $roomQuatity,
-                    "GrandTotalPaxCount"         => $grandTotalPaxCount * $roomQuatity,
-                    "TotalPaxMaleCount"          => (int)($people['adult_qty'] * $roomQuatity),
-                    "TotalPaxFemaleCount"        => 0,
-                    "TotalChildA70Count"         => $childCount > 0 ? $childCount : "",
-                    "TotalChildA70Count2"        => "",
-                    "TotalChildB50Count"         => $childMealAndMattressCount > 0 ? $childMealAndMattressCount : "",
-                    "TotalChildB50Count2"        => $childMealCount > 0 ? $childMealCount : "",
-                    "TotalChildC30Count"         => $childMattressCount > 0 ? $childMattressCount : "",
-                    "TotalChildDNoneCount"       => $childNoMealAndNoMattressCount > 0 ? $childNoMealAndNoMattressCount : "",
-                    "TypeOfGroupDoubleByte"      => "", // TODO change
-                    "PackageType"                => "",
-                    "PackagePlanName"            => $plan->name,
-                    "PackagePlanCode"            => $plan->tllincoln_plan_code,
-                    "PackagePlanContent"         => $plan->description,
-                    "MealCondition"              => $tlLincolnMeals,
-                    "SpecificMealCondition"      => $tlLincolnSpecificMeals,
-                    "ModificationPoint"          => "",
-                    "SpecialServiceRequest"      => $bookingSystem->note ?? "",
-                    "OtherServiceInformation"    => $taxLocal ?? "",
-                    "SalesOfficeComment"         => "",
-                    "QuestionAndAnswerList"      => [
-                        "FromHotelQuestion" => mb_substr($plan->question_to_customer, 0, 100, 'UTF-8') ?? "",
-                        "ToHotelAnswer"     => $booking->answer ?? "",
-                    ]
-                ],
-                "BasicRateInformation"     => [
-                    "RoomRateOrPersonalRate"                              => "PersonalRate", // TODO change
-                    "TaxServiceFee"                                       => "IncludingServiceAndTax",
-                    "Payment"                                             => "",
-                    "SettlementDiv"                                       => "", // TODO change
-                    "TotalAccommodationCharge"                            => $totalAccommodationCharge,
-                    "TotalAccommodationConsumptionTax"                    => $totalAccommodationConsumptionTax,
-                    "TotalAccommodationHotSpringTax"                      => $totalAccommodationHotSpringTax,
-                    "TotalAccomodationServiceCharge"                      => 0,
-                    "TotalAccommodationDiscountPoints"                    => $totalAccommodationDiscountPoints,
-                    "TotalAccommodationConsumptionTaxAfterDiscountPoints" => "",
-                    "AmountClaimed"                                       => $amountClaimed,
-                    "PointsDiscountList"                                  => $pointsDiscountList,
-                    "DepositList"                                         => [
-                        "DepositAmount" => "", //TODO: check deposit
-
-                    ],
-                    "CurrencyCode"                                        => "JPY",
-                ],
-                "MemberInformation"        => [
-                    "MemberName"                  => $memberName,
-                    "MemberKanjiName"             => $memberKanjiName,
-                    "MemberMiddleName"            => "",
-                    "MemberDateOfBirth"           => $memberDateOfBirth,
-                    "MemberEmergencyNumber"       => "",
-                    "MemberOccupation"            => "",
-                    "MemberOrganization"          => "",
-                    "MemberOrganizationKana"      => "",
-                    "MemberOrganizationCode"      => "",
-                    "MemberPosition"              => "",
-                    "MemberOfficePostalCode"      => "",
-                    "MemberOfficeAddress"         => "",
-                    "MemberOfficeTelephoneNumber" => "",
-                    "MemberOfficeFaxNumber"       => "",
-                    "MemberGenderDiv"             => $memberGenderDiv ?? "",
-                    "MemberClass"                 => "",
-                    "CurrentPoints"               => "",
-                    "MailDemandDiv"               => "",
-                    "PamphletDemandDiv"           => "",
-                    "MemberID"                    => "",
-                    "MemberPhoneNumber"           => $memberPhoneNumber ?? "",
-                    "MemberEmail"                 => $memberEmail ?? "",
-                    "MemberPostalCode"            => $memberPostalCode ?? "",
-                    "MemberAddress"               => $memberAddress ?? "",
-                ],
-                "OptionInformation"        => $strOption,
-                "RoomInformationList"      => [
-                    "RoomAndGuestList" => $strSlot
-                ]
-            ]
-        ];
-
-        return $dataRequest;
     }
 
     /**
@@ -679,10 +445,10 @@ class TlLincolnSoapService
             )->format($dateFormat);
             $endDayMax = Carbon::parse($startDay)->addDays(30)->format($dateFormat);
         } catch (\Exception $e) {
-            return response()->json([
+            return [
                 'success' => false,
                 'message' => 'date input is not valid!'
-            ]);
+            ];
         }
 
         $validator = \Validator::make($request->all(), [
@@ -697,10 +463,10 @@ class TlLincolnSoapService
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
+            return [
                 'success' => false,
                 'message' => $validator->errors()
-            ]);
+            ];
         }
 
         return compact('startDay', 'endDay');
