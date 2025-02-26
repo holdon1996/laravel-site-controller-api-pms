@@ -445,10 +445,10 @@ class TlLincolnSoapService
             )->format($dateFormat);
             $endDayMax = Carbon::parse($startDay)->addDays(30)->format($dateFormat);
         } catch (\Exception $e) {
-            return response()->json([
+            return [
                 'success' => false,
                 'message' => 'date input is not valid!'
-            ]);
+            ];
         }
 
         $validator = \Validator::make($request->all(), [
@@ -463,10 +463,10 @@ class TlLincolnSoapService
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
+            return [
                 'success' => false,
                 'message' => $validator->errors()
-            ]);
+            ];
         }
 
         return compact('startDay', 'endDay');
