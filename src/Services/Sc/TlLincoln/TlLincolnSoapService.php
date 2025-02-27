@@ -39,7 +39,7 @@ class TlLincolnSoapService
      */
     public function getEmptyRoom(Request $request)
     {
-        $isWriteLog = config('sc.is_write_log');
+        $isWriteLog     = config('sc.is_write_log');
         $dateValidation = $this->validateAndParseDates($request);
         if (isset($dateValidation['success']) && !$dateValidation['success']) {
             return $dateValidation;
@@ -80,8 +80,8 @@ class TlLincolnSoapService
             }
 
             return response()->json([
-                'success' => $success,
-                'data'    => $data,
+                'success'     => $success,
+                'data'        => $data,
                 'xmlResponse' => $response
             ]);
         } catch (\Exception $e) {
@@ -162,7 +162,7 @@ class TlLincolnSoapService
      */
     public function getPricePlan(Request $request)
     {
-        $isWriteLog = config('sc.is_write_log');
+        $isWriteLog     = config('sc.is_write_log');
         $dateValidation = $this->validateAndParseDates($request);
         if (isset($dateValidation['success']) && !$dateValidation['success']) {
             return $dateValidation;
@@ -202,8 +202,8 @@ class TlLincolnSoapService
             }
 
             return response()->json([
-                'success' => $success,
-                'data'    => $data,
+                'success'     => $success,
+                'data'        => $data,
                 'xmlResponse' => $response
             ]);
         } catch (\Exception $e) {
@@ -261,7 +261,7 @@ class TlLincolnSoapService
             return response()->json([
                 'success' => $success,
                 'data'    => $data,
-                'date' => now()->format(config('sc.tllincoln_api.date_format')),
+                'date'    => now()->format(config('sc.tllincoln_api.date_format')),
             ]);
         } catch (\Exception $e) {
             $soapApiLog['response']   = $e->getMessage();
@@ -338,19 +338,25 @@ class TlLincolnSoapService
      *
      * @param $command
      * @param array $dataRequest
-     * @param $naifVersion
      * @return void
-     * @throws Exception
      */
     public function prepareTllSoapBody($command, $dataRequest)
     {
-        $userInfo = [
+        $userInfo    = [
             'agtId'       => config('sc.tllincoln_api.agt_id'),
             'agtPassword' => config('sc.tllincoln_api.agt_password')
         ];
-        $naifVersion = config('sc.tllincoln_api.naif_xml_version.naif_3000');
         $this->tlLincolnSoapBody->setMainBodyWrapSection($command . 'Request');
-        $body = $this->tlLincolnSoapBody->generateBody($command, $dataRequest, $naifVersion, $userInfo);
+        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_booking';
+        $xmlnsVersion   = config($xmlnsVersionKey);
+        $body           = $this->tlLincolnSoapBody->generateBody(
+            $command,
+            $dataRequest,
+            $xmlnsType,
+            $xmlnsVersion,
+            $userInfo
+        );
         $this->tlLincolnSoapClient->setHeaders();
         $this->tlLincolnSoapClient->setBody($body);
     }
@@ -363,7 +369,7 @@ class TlLincolnSoapService
      */
     public function processBooking($url, $command, $request)
     {
-        $this->prepareTllSoapBody($command,$request);
+        $this->prepareTllSoapBody($command, $request);
         try {
             $isWriteLog = config('sc.is_write_log');
             $soapApiLog = [
@@ -408,12 +414,11 @@ class TlLincolnSoapService
             }
 
             return response()->json([
-                'success' => $success,
-                'message' => $success ? [] : $message,
-                'data'    => $data,
+                'success'     => $success,
+                'message'     => $success ? [] : $message,
+                'data'        => $data,
                 'xmlResponse' => $response
             ]);
-
         } catch (\Exception $e) {
             $soapApiLog['response']   = $e->getMessage();
             $soapApiLog['is_success'] = false;
@@ -422,8 +427,8 @@ class TlLincolnSoapService
             }
 
             return response()->json([
-                'success' => false,
-                'message' => $e->getMessage(),
+                'success'     => false,
+                'message'     => $e->getMessage(),
                 'xmlResponse' => $response
             ]);
         }
@@ -511,8 +516,16 @@ class TlLincolnSoapService
             'agtId'       => config('sc.tllincoln_api.agt_id'),
             'agtPassword' => config('sc.tllincoln_api.agt_password')
         ];
-
-        $body = $this->tlLincolnSoapBody->generateBody('roomAvailabilitySalesSts', $dataRequest, null, $userInfo);
+        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion   = config($xmlnsVersionKey);
+        $body = $this->tlLincolnSoapBody->generateBody(
+            'roomAvailabilitySalesSts',
+            $dataRequest,
+            $xmlnsType,
+            $xmlnsVersion,
+            $userInfo
+        );
         $this->tlLincolnSoapClient->setBody($body);
     }
 
@@ -542,12 +555,21 @@ class TlLincolnSoapService
         ];
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilityAllSalesStsRequest');
-        $userInfo = [
+        $userInfo       = [
             'agtId'       => config('sc.tllincoln_api.agt_id'),
             'agtPassword' => config('sc.tllincoln_api.agt_password')
         ];
+        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion   = config($xmlnsVersionKey);
 
-        $body = $this->tlLincolnSoapBody->generateBody('roomAvailabilityAllSalesSts', $dataRequest, null, $userInfo);
+        $body = $this->tlLincolnSoapBody->generateBody(
+            'roomAvailabilityAllSalesSts',
+            $dataRequest,
+            $xmlnsType,
+            $xmlnsVersion,
+            $userInfo
+        );
         $this->tlLincolnSoapClient->setBody($body);
     }
 
@@ -598,11 +620,20 @@ class TlLincolnSoapService
 
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionRequest');
-        $userInfo = [
+        $userInfo       = [
             'agtId'       => config('sc.tllincoln_api.agt_id'),
             'agtPassword' => config('sc.tllincoln_api.agt_password')
         ];
-        $body     = $this->tlLincolnSoapBody->generateBody('planPriceInfoAcquisition', $dataRequest, null, $userInfo);
+        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion   = config($xmlnsVersionKey);
+        $body           = $this->tlLincolnSoapBody->generateBody(
+            'planPriceInfoAcquisition',
+            $dataRequest,
+            $xmlnsType,
+            $xmlnsVersion,
+            $userInfo
+        );
         $this->tlLincolnSoapClient->setBody($body);
     }
 
@@ -636,14 +667,18 @@ class TlLincolnSoapService
 
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionAllRequest');
-        $userInfo = [
+        $userInfo       = [
             'agtId'       => config('sc.tllincoln_api.agt_id'),
             'agtPassword' => config('sc.tllincoln_api.agt_password')
         ];
-        $body     = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion   = config($xmlnsVersionKey);
+        $body           = $this->tlLincolnSoapBody->generateBody(
             'planPriceInfoAcquisitionAll',
             $dataRequest,
-            null,
+            $xmlnsType,
+            $xmlnsVersion,
             $userInfo
         );
         $this->tlLincolnSoapClient->setBody($body);

@@ -63,40 +63,39 @@ class TlLincolnSoapBody
 
     /**
      * @param $section
-     * @param $naifVersion
+     * @param $xmlnsType
+     * @param $xmlnsVersion
      * @return string
      */
-    private function wrapOpenSection($section, $naifVersion = null)
+    private function wrapOpenSection($section, $xmlnsType, $xmlnsVersion)
     {
-        if ($naifVersion && $naifVersion == config('sc.tllincoln_api.naif_xml_version.naif_3000')) {
-            $xmlnsUrl = 'http://naifc3000.naifc30.nai.lincoln.seanuts.co.jp/';
-        } else {
-            $xmlnsUrl = 'http://naifc1000.naifc10.nai.lincoln.seanuts.co.jp/';
-        }
+        $xmlnsUrl = $xmlnsVersion['url'];
 
-        return '<soapenv:Envelope xmlns:soapenv=\'http://schemas.xmlsoap.org/soap/envelope/\' xmlns:naif=\'' . $xmlnsUrl . '\'><soapenv:Header/><soapenv:Body><naif:' . $section . '>';
+        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:$xmlnsType=\"$xmlnsUrl\"><soapenv:Header/><soapenv:Body><$xmlnsType:$section>";
     }
 
     /**
      * @param $section
+     * @param string $xmlnsType
      * @return string
      */
-    private function wrapCloseSection($section)
+    private function wrapCloseSection($section, $xmlnsType)
     {
-        return '</naif:' . $section . '></soapenv:Body></soapenv:Envelope>';
+        return "</$xmlnsType:$section></soapenv:Body></soapenv:Envelope>";
     }
 
     /**
      * @param $section
      * @param $bodyRequest
-     * @param $naifVersion
+     * @param $xmlnsType
+     * @param $xmlnsVersion
      * @param $userInfo
      * @return string
      */
-    public function generateBody($section, $bodyRequest, $naifVersion = null, $userInfo)
+    public function generateBody($section, $bodyRequest, $xmlnsType, $xmlnsVersion, $userInfo)
     {
-        $soapOpenSection  = $this->wrapOpenSection($section, $naifVersion);
-        $soapCloseSection = $this->wrapCloseSection($section);
+        $soapOpenSection  = $this->wrapOpenSection($section, $xmlnsType, $xmlnsVersion);
+        $soapCloseSection = $this->wrapCloseSection($section, $xmlnsType);
 
         $commonRequest = $this->commonRequest($userInfo);
         $bodyRequest   = array_merge($commonRequest, $bodyRequest);

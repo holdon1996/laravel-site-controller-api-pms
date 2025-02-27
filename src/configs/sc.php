@@ -39,8 +39,23 @@ return [
         'tllincoln_date_format_api' => 'Ymd',
         'system_format_time' => 'h:m:s',
         'empty_room_max_month' => 13,
-        'naif_xml_version' => [
-            'naif_3000' => 3000,
+        'xml' => [
+            'xmlns_type' => 'naif', // TODO change if use other
+            'naif' => [
+                'code' => 'naif',
+                'naif_common' => [
+                    'url' => 'http://naifc1000.naifc10.nai.lincoln.seanuts.co.jp/',
+                ],
+                'naif_booking' => [
+                    'url' => 'http://naifc3000.naifc30.nai.lincoln.seanuts.co.jp/',
+                ],
+            ],
+            'pms' => [
+                'code' => 'pms',
+                'pmsfc_common' => [
+                    'url' => 'http://pmsfc1002.pmsfc10.pms.lincoln.seanuts.co.jp',
+                ],
+            ],
         ],
         'result_code_xml' => [
             'success' => 'True',
