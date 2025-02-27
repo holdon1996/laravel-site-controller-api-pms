@@ -404,7 +404,7 @@ class TlLincolnService
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_master_hotel'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
             'agtId'       => $tllincolnAccount->agt_id,
-            'agtPassword' => $tllincolnAccount->agt_password)
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request

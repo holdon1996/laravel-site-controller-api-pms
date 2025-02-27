@@ -349,15 +349,15 @@ class TlLincolnSoapService
             return;
         }
 
-        $userInfo    = [
+        $userInfo = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
         $this->tlLincolnSoapBody->setMainBodyWrapSection($command . 'Request');
-        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_booking';
-        $xmlnsVersion   = config($xmlnsVersionKey);
-        $body           = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsVersion    = config($xmlnsVersionKey);
+        $body            = $this->tlLincolnSoapBody->generateBody(
             $command,
             $dataRequest,
             $xmlnsType,
@@ -525,14 +525,14 @@ class TlLincolnSoapService
         ];
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilitySalesStsRequest');
-        $userInfo = [
+        $userInfo        = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion   = config($xmlnsVersionKey);
-        $body = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsVersion    = config($xmlnsVersionKey);
+        $body            = $this->tlLincolnSoapBody->generateBody(
             'roomAvailabilitySalesSts',
             $dataRequest,
             $xmlnsType,
@@ -573,13 +573,13 @@ class TlLincolnSoapService
         ];
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilityAllSalesStsRequest');
-        $userInfo       = [
+        $userInfo        = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion   = config($xmlnsVersionKey);
+        $xmlnsVersion    = config($xmlnsVersionKey);
 
         $body = $this->tlLincolnSoapBody->generateBody(
             'roomAvailabilityAllSalesSts',
@@ -643,14 +643,14 @@ class TlLincolnSoapService
 
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionRequest');
-        $userInfo       = [
+        $userInfo        = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion   = config($xmlnsVersionKey);
-        $body           = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsVersion    = config($xmlnsVersionKey);
+        $body            = $this->tlLincolnSoapBody->generateBody(
             'planPriceInfoAcquisition',
             $dataRequest,
             $xmlnsType,
@@ -695,14 +695,14 @@ class TlLincolnSoapService
 
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionAllRequest');
-        $userInfo       = [
+        $userInfo        = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion   = config($xmlnsVersionKey);
-        $body           = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsVersion    = config($xmlnsVersionKey);
+        $body            = $this->tlLincolnSoapBody->generateBody(
             'planPriceInfoAcquisitionAll',
             $dataRequest,
             $xmlnsType,
