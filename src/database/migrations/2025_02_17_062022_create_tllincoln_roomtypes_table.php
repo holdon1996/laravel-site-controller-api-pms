@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->integer('tllincoln_roomtype_status');
             $table->integer('tllincoln_roomtype_code');
             $table->string('tllincoln_roomtype_name');
-            $table->string('tllincoln_roomtype_description', 2000)->nullable();
+            $table->text('tllincoln_roomtype_description')->nullable();
             $table->integer('tllincoln_roomtype_min_person');
             $table->integer('tllincoln_roomtype_max_person');
             $table->string('tllincoln_roomtype_type')->nullable();

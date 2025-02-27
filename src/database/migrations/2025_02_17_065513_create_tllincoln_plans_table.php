@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyInteger('tllincoln_plan_room_status');
             $table->integer('tllincoln_plan_id');
             $table->string('tllincoln_plan_name');
-            $table->string('tllincoln_plan_description', 2000)->nullable();
+            $table->text('tllincoln_plan_description')->nullable();
             $table->integer('tllincoln_plan_sell_time_from')->nullable();
             $table->integer('tllincoln_plan_sell_time_to')->nullable();
             $table->integer('tllincoln_plan_start_upload')->nullable();
@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('tllincoln_plan_image3_caption')->nullable();
             $table->bigInteger('tllincoln_plan_image3_updated_at')->nullable();
             $table->string('tllincoln_plan_limited_quantity')->nullable();
-            $table->string('tllincoln_plan_cancellation_policy', 2000)->nullable();
+            $table->text('tllincoln_plan_cancellation_policy')->nullable();
             $table->integer('tllincoln_plan_min_person')->nullable();
             $table->integer('tllincoln_plan_max_person')->nullable();
             $table->integer('tllincoln_plan_fee_child_high_accept')->nullable();
