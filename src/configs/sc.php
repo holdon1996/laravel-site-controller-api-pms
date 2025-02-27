@@ -50,13 +50,7 @@ return [
                 'naif_booking' => [
                     'url' => 'http://naifc3000.naifc30.nai.lincoln.seanuts.co.jp/',
                 ],
-            ],
-            'pms' => [
-                'code' => 'pms',
-                'pmsfc_common' => [
-                    'url' => 'http://pmsfc1002.pmsfc10.pms.lincoln.seanuts.co.jp',
-                ],
-            ],
+            ]
         ],
         'result_code_xml' => [
             'success' => 'True',
