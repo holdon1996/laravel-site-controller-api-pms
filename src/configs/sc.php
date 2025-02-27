@@ -8,8 +8,6 @@ return [
         'mapping_data_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnMappingService::class,
     ],
     'tllincoln_api' => [
-        'agt_id' => env('SC_TLLINCOLN_AGT_ID'),
-        'agt_password' => env('SC_TLLINCOLN_AGT_PASSWORD'),
         'date_format' => 'Y-m-d',
         'time_format' => 'h:i:s',
         'get_empty_room_series_url' => env('SC_TLLINCOLN_URL_SOAP_API') . 'RoomAndPlanInquirySalesStsService',

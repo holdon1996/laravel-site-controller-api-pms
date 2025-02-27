@@ -3,6 +3,7 @@
 namespace ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln;
 
 use ThachVd\LaravelSiteControllerApi\Models\ScTlLincolnSoapApiLog;
+use ThachVd\LaravelSiteControllerApi\Models\TllincolnAccount;
 use ThachVd\LaravelSiteControllerApi\Services\Sc\Xml2Array\Xml2Array;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -342,9 +343,15 @@ class TlLincolnSoapService
      */
     public function prepareTllSoapBody($command, $dataRequest)
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
+
         $userInfo    = [
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password')
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password
         ];
         $this->tlLincolnSoapBody->setMainBodyWrapSection($command . 'Request');
         $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
@@ -484,6 +491,12 @@ class TlLincolnSoapService
      */
     public function setEmptyRoomSoapRequest(array $dateValidation, Request $request): void
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
+
         $startDay       = $dateValidation['startDay'];
         $endDay         = $dateValidation['endDay'];
         $perRmPaxCount  = $request->input('person_number');
@@ -513,8 +526,8 @@ class TlLincolnSoapService
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilitySalesStsRequest');
         $userInfo = [
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password')
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password
         ];
         $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
@@ -535,6 +548,11 @@ class TlLincolnSoapService
      */
     public function setBulkEmptyRoomSoapRequest(Request $request): void
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $tllHotelCode   = $request->input('tllHotelCode');
         $tllRmTypeCode  = $request->input('tllRmTypeCode');
         $tllRmTypeInfos = [];
@@ -556,8 +574,8 @@ class TlLincolnSoapService
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilityAllSalesStsRequest');
         $userInfo       = [
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password')
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password
         ];
         $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
@@ -580,6 +598,11 @@ class TlLincolnSoapService
      */
     public function setPricePlanSoapRequest(array $dateValidation, Request $request): void
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $startDay      = $dateValidation['startDay'];
         $endDay        = $dateValidation['endDay'];
         $minPrice      = $request->input('min_price');
@@ -621,8 +644,8 @@ class TlLincolnSoapService
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionRequest');
         $userInfo       = [
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password')
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password
         ];
         $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
@@ -643,6 +666,11 @@ class TlLincolnSoapService
      */
     public function setBulkPricePlanSoapRequest(Request $request): void
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $tllHotelCode  = $request->input('tllHotelCode');
         $tllRmTypeCode = $request->input('tllRmTypeCode');
         $tllPlanCode   = $request->input('tllPlanCode');
@@ -668,8 +696,8 @@ class TlLincolnSoapService
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionAllRequest');
         $userInfo       = [
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password')
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password
         ];
         $xmlnsType      = config('sc.tllincoln_api.xml.xmlns_type');
         $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';

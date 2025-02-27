@@ -5,6 +5,7 @@ namespace ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
 use ThachVd\LaravelSiteControllerApi\Models\ScApiLog;
+use ThachVd\LaravelSiteControllerApi\Models\TllincolnAccount;
 use ThachVd\LaravelSiteControllerApi\Models\TlLincolnEmptyRoom;
 use ThachVd\LaravelSiteControllerApi\Models\TlLincolnHotel;
 use ThachVd\LaravelSiteControllerApi\Models\TlLincolnPlan;
@@ -394,11 +395,16 @@ class TlLincolnService
      */
     public function getMasterHotel()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_master_hotel'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password')
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password)
         ];
 
         // set header request
@@ -429,11 +435,16 @@ class TlLincolnService
      */
     public function getMasterRoomType()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_master_room_type'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password'),
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request
@@ -464,11 +475,16 @@ class TlLincolnService
      */
     public function getMasterRoomTypeDiff()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_diff_master_room_type'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password'),
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request
@@ -499,11 +515,16 @@ class TlLincolnService
      */
     public function getMasterPlan()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_master_plan'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password'),
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request
@@ -534,11 +555,16 @@ class TlLincolnService
      */
     public function getMasterPlanDiff()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in table tllincoln_accounts');
+            return;
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_diff_master_plan'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password'),
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request
@@ -569,11 +595,16 @@ class TlLincolnService
      */
     public function getFileCsvEmptyRoom()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
+            return;
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_diff_empty_room'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password'),
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request
@@ -604,11 +635,15 @@ class TlLincolnService
      */
     public function getFileCsvPlanPrice()
     {
+        $tllincolnAccount = TllincolnAccount::first();
+        if (!$tllincolnAccount) {
+            \Log::error('No information Setting TL account');
+        }
         $queryParams = [
             'fileType'    => config('sc.tllincoln_api.api_file_type_const.file_diff_price_plan'),
             'searchType'  => config('sc.tllincoln_api.api_search_type_const.new'),
-            'agtId'       => config('sc.tllincoln_api.agt_id'),
-            'agtPassword' => config('sc.tllincoln_api.agt_password'),
+            'agtId'       => $tllincolnAccount->agt_id,
+            'agtPassword' => $tllincolnAccount->agt_password,
         ];
 
         // set header request
