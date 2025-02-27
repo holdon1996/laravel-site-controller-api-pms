@@ -10,6 +10,7 @@ use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterPlanFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterRoomTypeDiffFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\MasterRoomTypeFromTlLincoln;
 use ThachVd\LaravelSiteControllerApi\Console\Commands\PlanPriceFromTlLincoln;
+use ThachVd\LaravelSiteControllerApi\Http\Middleware\ScApiAuth;
 
 class SiteControllerApiServiceProvider extends ServiceProvider
 {
@@ -70,6 +71,8 @@ class SiteControllerApiServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/Console/Commands/' => app_path('Console/Commands'),
         ], 'sc-api-commands');
+
+        $this->app['router']->aliasMiddleware('api.sc.auth', ScApiAuth::class);
 
         //// publish model
         //$publishedModelPaths = [

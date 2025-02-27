@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'api_key' => env('SC_API_KEY'),
     'is_write_log' => true, // config write log default of package
     'tllincoln' => [
         'booking_handler' => \ThachVd\LaravelSiteControllerApi\Services\Sc\TlLincoln\TlLincolnSoapService::class,
