@@ -344,12 +344,7 @@ class TlLincolnSoapService
     public function prepareTllSoapBody($command, $dataRequest)
     {
         $tllincolnAccount = TllincolnAccount::first();
-        if (!$tllincolnAccount) {
-            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
-            return;
-        }
-
-        $userInfo = [
+        $userInfo         = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
@@ -491,12 +486,6 @@ class TlLincolnSoapService
      */
     public function setEmptyRoomSoapRequest(array $dateValidation, Request $request): void
     {
-        $tllincolnAccount = TllincolnAccount::first();
-        if (!$tllincolnAccount) {
-            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
-            return;
-        }
-
         $startDay       = $dateValidation['startDay'];
         $endDay         = $dateValidation['endDay'];
         $perRmPaxCount  = $request->input('person_number');
@@ -525,14 +514,15 @@ class TlLincolnSoapService
         ];
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilitySalesStsRequest');
-        $userInfo        = [
+        $tllincolnAccount = TllincolnAccount::first();
+        $userInfo         = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
-        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion    = config($xmlnsVersionKey);
-        $body            = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsType        = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey  = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion     = config($xmlnsVersionKey);
+        $body             = $this->tlLincolnSoapBody->generateBody(
             'roomAvailabilitySalesSts',
             $dataRequest,
             $xmlnsType,
@@ -548,11 +538,6 @@ class TlLincolnSoapService
      */
     public function setBulkEmptyRoomSoapRequest(Request $request): void
     {
-        $tllincolnAccount = TllincolnAccount::first();
-        if (!$tllincolnAccount) {
-            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
-            return;
-        }
         $tllHotelCode   = $request->input('tllHotelCode');
         $tllRmTypeCode  = $request->input('tllRmTypeCode');
         $tllRmTypeInfos = [];
@@ -573,13 +558,14 @@ class TlLincolnSoapService
         ];
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('roomAvailabilityAllSalesStsRequest');
-        $userInfo        = [
+        $tllincolnAccount = TllincolnAccount::first();
+        $userInfo         = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
-        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion    = config($xmlnsVersionKey);
+        $xmlnsType        = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey  = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion     = config($xmlnsVersionKey);
 
         $body = $this->tlLincolnSoapBody->generateBody(
             'roomAvailabilityAllSalesSts',
@@ -598,11 +584,6 @@ class TlLincolnSoapService
      */
     public function setPricePlanSoapRequest(array $dateValidation, Request $request): void
     {
-        $tllincolnAccount = TllincolnAccount::first();
-        if (!$tllincolnAccount) {
-            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
-            return;
-        }
         $startDay      = $dateValidation['startDay'];
         $endDay        = $dateValidation['endDay'];
         $minPrice      = $request->input('min_price');
@@ -643,14 +624,15 @@ class TlLincolnSoapService
 
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionRequest');
-        $userInfo        = [
+        $tllincolnAccount = TllincolnAccount::first();
+        $userInfo         = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
-        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion    = config($xmlnsVersionKey);
-        $body            = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsType        = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey  = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion     = config($xmlnsVersionKey);
+        $body             = $this->tlLincolnSoapBody->generateBody(
             'planPriceInfoAcquisition',
             $dataRequest,
             $xmlnsType,
@@ -666,11 +648,6 @@ class TlLincolnSoapService
      */
     public function setBulkPricePlanSoapRequest(Request $request): void
     {
-        $tllincolnAccount = TllincolnAccount::first();
-        if (!$tllincolnAccount) {
-            \Log::error('no have setting account TL found. Please insert data in tllincoln_accounts');
-            return;
-        }
         $tllHotelCode  = $request->input('tllHotelCode');
         $tllRmTypeCode = $request->input('tllRmTypeCode');
         $tllPlanCode   = $request->input('tllPlanCode');
@@ -695,14 +672,15 @@ class TlLincolnSoapService
 
 
         $this->tlLincolnSoapBody->setMainBodyWrapSection('planPriceInfoAcquisitionAllRequest');
-        $userInfo        = [
+        $tllincolnAccount = TllincolnAccount::first();
+        $userInfo         = [
             'agtId'       => $tllincolnAccount->agt_id,
             'agtPassword' => $tllincolnAccount->agt_password
         ];
-        $xmlnsType       = config('sc.tllincoln_api.xml.xmlns_type');
-        $xmlnsVersionKey = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
-        $xmlnsVersion    = config($xmlnsVersionKey);
-        $body            = $this->tlLincolnSoapBody->generateBody(
+        $xmlnsType        = config('sc.tllincoln_api.xml.xmlns_type');
+        $xmlnsVersionKey  = "sc.tllincoln_api.xml.$xmlnsType.$xmlnsType" . '_common';
+        $xmlnsVersion     = config($xmlnsVersionKey);
+        $body             = $this->tlLincolnSoapBody->generateBody(
             'planPriceInfoAcquisitionAll',
             $dataRequest,
             $xmlnsType,
